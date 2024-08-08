@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+rm -rf decrypted-secrets/
+
+function decrypt() {
+    encryptedFilepath=$1
+    destinationFolder=decrypted-secrets/$(dirname $(realpath --relative-to ./encrypted-secrets "$encryptedFilepath"))
+    decryptedFilename=$(basename "$encryptedFilepath" .gpg)
+
+    mkdir -p "$destinationFolder"
+    gpg --output "$destinationFolder/$decryptedFilename" --decrypt "$encryptedFilepath"
+}
+
+shopt -s globstar
+
+for encryptedFilepath in ./encrypted-secrets/**/*.gpg; do
+    decrypt "$encryptedFilepath"
+done

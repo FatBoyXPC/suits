@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+encryptedFilename=$1
+
+if [[ $encryptedFilename != *.gpg ]]; then
+    echo "$encryptedFilename" is not a gpg file > /dev/stderr
+    exit 1
+fi
+
+decryptedFilename=$(mktemp)
+trap "rm $decryptedFilename" EXIT
+
+if [ -f "$encryptedFilename" ]; then
+    gpg --decrypt "$encryptedFilename" > "$decryptedFilename"
+fi
+
+"$EDITOR" "$decryptedFilename"
+gpg --output - --recipient "James" --encrypt "$decryptedFilename" > "$encryptedFilename"
