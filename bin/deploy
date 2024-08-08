@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+target=$1
+
+decrypt
+
+rsync -avP --rsync-path="sudo rsync" decrypted-secrets/$target/ $target:/
+
+nixos-rebuild switch --use-remote-sudo --flake .#$target --target-host $target

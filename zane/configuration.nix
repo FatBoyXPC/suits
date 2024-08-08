@@ -21,8 +21,18 @@
 
   networking.hostName = "zane"; # Define your hostname.
   # Pick only one of the below networking options.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  networking.wireless = {
+    enable = true;
+    environmentFile = "/etc/secrets/wireless.env";
+    networks = {
+      "@}--;--'---" = {
+        psk = "@PSK_HOME@";
+      };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -73,6 +83,8 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
+
+  nix.settings.trusted-users = [ "root" "@wheel" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
