@@ -6,6 +6,6 @@ target=$1
 
 decrypt
 
-rsync -avP --rsync-path="sudo rsync" decrypted-secrets/$target/ $target:/
+rsync -avP --delete --chown=root:root --rsync-path="sudo rsync" decrypted-secrets/$target/ $target:/etc/secrets/
 
 nixos-rebuild switch --use-remote-sudo --flake .#$target --target-host $target
