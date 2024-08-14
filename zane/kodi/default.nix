@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  myKodi = pkgs.kodi;
+  myKodiPackages = pkgs.callPackage ./packages { };
+  myKodi = pkgs.kodi.withPackages (builtin_kodi_packages: [
+    myKodiPackages.asgard
+  ]);
 
 in
 {
