@@ -9,6 +9,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disk-config.nix
+      ./gpu.nix
+
+      ./desktop.nix
+      ./kodi
     ];
 
   # Use the GRUB 2 boot loader.
