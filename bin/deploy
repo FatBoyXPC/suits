@@ -4,8 +4,10 @@ set -euo pipefail
 
 target=$1
 
-decrypt
 
-rsync -avP --delete --chown=root:root --rsync-path="sudo rsync" decrypted-secrets/$target/ $target:/etc/secrets/
+if test -d "encrypted-secrets/$target/"; then
+    decrypt
+    rsync -avP --delete --chown=root:root --rsync-path="sudo rsync" decrypted-secrets/$target/ $target:/etc/secrets/
+fi
 
 nixos-rebuild switch --use-remote-sudo --flake .#$target --target-host $target
