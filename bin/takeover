@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+host=$1
+
+shift
+
+nix run github:nix-community/nixos-anywhere -- --flake ".#$host" root@pearson --generate-hardware-config nixos-generate-config "./hosts/$host/hardware-configuration.nix" "$@"

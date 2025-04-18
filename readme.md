@@ -2,29 +2,25 @@ Jeremy says I need a readme, so here we go!
 
 ### Provisioning a new machine:
 
-Reference this if needed:
-https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md
+Reference [nixos-anywhere quickstart](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md) if needed:
 
 - Create the appropriate machine config files in the repo
-- It might be wise to run `nixos-generate-config` (on the machine to be
-    provisioned) to ensure an accurate hardware configuration
-  - This will need to be copied back to the repo
 - Ensure to `git add` all the appropriate things
-- Run the nixos-anywhere command! (Last step, step 8)
+- Read pearson's readme and boot from iso or netboot!
+- Run the `takeover` script!
 
-##### nixos-anywhere command:
+  This ends up running `nixos-anywhere` from the last step in the quickstart.
+  This forwards all arguments after the host to the `nixos-anywhere` command.
 
-`nix run github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> root@<ip address>`
+  Example:
+  ```
+  takeover zane
+  ```
 
-Example:
-```
-nix run github:nix-community/nixos-anywhere -- --flake .#zane root@192.168.2.62
-```
-
-This can also be run without rebooting:
-```
-nix run github:nix-community/nixos-anywhere -- --flake .#zane root@192.168.2.62 --no-reboot
-```
+  This can also be run without rebooting:
+  ```
+  takeover zane --no-reboot
+  ```
 
 ### Deploying changes to a machine:
 
