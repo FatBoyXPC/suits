@@ -10,7 +10,7 @@ if test -d "encrypted-secrets/$target/"; then
 fi
 
 if [[ "$target" == $(hostname) ]]; then
-    nixos-rebuild switch --flake .#$target
+    nixos-rebuild switch --use-remote-sudo --flake ".#$target"
 else
-    nixos-rebuild switch --use-remote-sudo --flake .#$target --target-host $target
+    nixos-rebuild switch --use-remote-sudo --flake ".#$target" --target-host $target
 fi
