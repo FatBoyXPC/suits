@@ -64,6 +64,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.james = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
@@ -71,16 +72,36 @@
     ];
   };
 
+  services.openssh.enable = true;
+
   security.sudo.wheelNeedsPassword = false;
 
   nix.settings.trusted-users = [ "root" "@wheel" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+   environment.systemPackages = with pkgs; [
+     direnv
+     git
+     neovim
+   ];
+
+   programs.direnv = {
+     enable = true;
+     nix-direnv.enable = true;
+   };
+
+   programs.zsh.enable = true;
+
+   environment.variables = {
+     EDITOR = "nvim";
+   };
+
+   #nix.gc = {
+     #automatic = true;
+     #dates = "weekly";
+     #options = "--delete-older-than 30d";
+   #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
