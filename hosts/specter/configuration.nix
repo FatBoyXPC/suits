@@ -72,11 +72,16 @@
     ];
   };
 
-  services.openssh.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
 
   nix.settings.trusted-users = [ "root" "@wheel" ];
+
+  # Flakes!
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -93,9 +98,32 @@
 
    programs.zsh.enable = true;
 
+   environment.loginShellInit = let startxScript = pkgs.writeShellScript "startxAtLogin" ''
+     [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+   '';
+   in toString startxScript;
+
    environment.variables = {
      EDITOR = "nvim";
    };
+
+  services.getty.greetingLine = ''If found, please email fatboyxpc@gmail.com immediately! \l'';
+  services.openssh.enable = true;
+
+  services.xserver = {
+    enable = true;
+    autorun = true;
+    displayManager.startx = {
+      enable = true;
+      generateScript = true;
+    };
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+    };
+    autoRepeatDelay = 300;
+    autoRepeatInterval = 30;
+  };
 
   services.interception-tools =
     let
