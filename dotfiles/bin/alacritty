@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export WITH_ALACRITTY_RAW_ALACRITTY_BIN=/usr/bin/alacritty
+
+exec with-alacritty alacritty "$@"

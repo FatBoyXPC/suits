@@ -1,0 +1,41 @@
+[user]
+    name = James LaChance
+    email = fatboyxpc@gmail.com
+    signingkey = C4ED3CA232118969
+[core]
+    editor = nvim
+    pager = diff-so-fancy | less $LESS
+    excludesfile = ~/.gitignore_global
+[init]
+    ;templatedir = ~/.git_templates
+[alias]
+    ctags = !.git/hooks/ctags
+[github]
+    user = FatBoyXPC
+[commit]
+    gpgsign = true
+[interactive]
+    diffFilter = ~/dotfiles/my-nix/result/share/git/contrib/diff-highlight/diff-highlight | less
+[tig "bind"]
+    main = ! !git revert %(commit)
+    status = N !@git add -N %(file)
+[color]
+    ui = true
+[color "diff-highlight"]
+    oldNormal = 196 bold
+    oldHighlight = 196 bold 52
+    newNormal = 34 bold
+    newHighlight = 34 bold 22
+[color "diff"]
+    meta = 130
+    frag = 33 bold
+    commit = 172 bold
+    old = 196 bold
+    new = 34 bold
+    whitespace = red reverse
+[log]
+    follow = true
+[pull]
+    rebase = false
+[rerere]
+    enabled = true

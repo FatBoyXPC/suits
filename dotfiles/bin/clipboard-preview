@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+image_target_found=$(xclip -o -selection clipboard -t TARGETS | grep image\/png)
+
+if [ -n "$image_target_found" ]; then
+    file=/tmp/clipboard-preview
+    xclip -o -selection clipboard -t image/png > $file
+    notify-send -i $file "Clipboard"
+else
+    notify-send "Clipboard: $(xclip -o -selection clipboard)"
+fi

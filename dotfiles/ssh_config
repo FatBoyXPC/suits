@@ -1,0 +1,109 @@
+AddKeysToAgent yes
+ServerAliveInterval 120
+
+Host allyjump
+    HostName 172.31.32.36
+    LocalForward 4106 app-allyms-cluster.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
+    LocalForward 4107 ally-demo.clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
+    LocalForward 4108 ally-staging.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
+    user ubuntu
+
+Host allytesting
+    Hostname 172.31.28.57
+    LocalForward 4206 ally-testing.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
+    user ubuntu
+    IdentityFile ~/.ssh/id_ed25519
+
+host jfly
+    HostName clark.jflei.com
+    LocalForward 8887 10.5.0.1:80
+    LocalForward 8888 10.5.1.1:80
+    user clark
+
+host clark
+    HostName clark
+    user clark
+
+Host ctdev
+    HostName 3.135.210.172
+    user ubuntu
+
+Host ctdevui
+    HostName 52.14.11.191
+    user ubuntu
+    IdentityFile ~/.ssh/id_ed25519
+
+Host ctdevlaravel
+    HostName 18.191.208.192
+    LocalForward 3206 172.31.27.80:3366
+    user ubuntu
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host ctproddf
+    HostName 3.22.246.98
+    user ubuntu
+    IdentityFile ~/.ssh/id_ed25519
+
+Host ctprodlaravel
+    HostName 3.136.174.224
+    LocalForward 3106 caretime-prod-db2.cuqtbiodsbak.us-east-2.rds.amazonaws.com:3306
+    LocalForward 1234 sftp-gov.4tellus.com:22
+    user ubuntu
+
+Host ctv2
+    HostName 3.144.237.12
+    user ubuntu
+    IdentityFile ~/.ssh/caretime-v2.pem
+
+Host ctprodrabbit
+    HostName 3.128.127.199
+    user ubuntu
+
+Host cubecomps-wca
+    HostName 52.43.124.237
+    User ubuntu
+
+Host cusa
+    HostName cubingusa.com
+    user ubuntu
+
+Host erin-home
+    HostName localhost
+    User erin
+    Port 4040
+    ProxyJump erin-vps
+
+Host erin-vps
+    HostName 63.142.241.211
+    User erin
+    Port 22
+
+
+Host fatboyxpc
+    #HostName fatboyxpc.com
+    HostName 192.168.2.109
+    user james
+
+Host fbproxy
+    HostName fatboyxpc.com
+    SessionType none
+    DynamicForward 9090
+    user james
+
+Host htpc
+    HostName 192.168.2.90
+    user james
+
+Host wcap
+    HostName worldcubeassociation.org
+
+Host wcas
+    HostName staging.worldcubeassociation.org
+
+Host wca*
+    user cubing
+
+Host zane
+    HostName zane
+    user zane
+    IdentityFile ~/.ssh/old_id_rsa

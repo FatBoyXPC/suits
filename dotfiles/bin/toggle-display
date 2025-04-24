@@ -1,0 +1,7 @@
+#!/bin/bash
+
+EXT="DP5"
+
+if (xrandr | grep "$EXT connected"); then
+    xrandr --output $EXT --auto
+fi
