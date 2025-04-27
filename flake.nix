@@ -16,7 +16,6 @@
       inherit (nixpkgs) lib;
       hosts = lib.filterAttrs (hostname: filetype: filetype == "directory") (builtins.readDir ./hosts);
 
-      #pkgs = nixpkgs.legacyPackages.x86_64-linux;
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfreePredicate =
@@ -41,8 +40,14 @@
           disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
           (./hosts + "/${hostname}/configuration.nix")
         ];
+        specialArgs = { flake = self; };
       }) hosts;
 
       packages.x86_64-linux = packages; # <<< TODO: do not hardcode the system here, either!
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        packages = [
+          pkgs.nixos-rebuild
+        ];
+      };
     };
 }
