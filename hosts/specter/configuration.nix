@@ -105,6 +105,7 @@
       intercept = "${pkgs.interception-tools}/bin/intercept";
       uinput = "${pkgs.interception-tools}/bin/uinput";
       caps2esc = "${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc";
+      print2superL = "${flake.packages.x86_64-linux.interception-k2k}/bin/print2superL"; # <<<< TODO: Change to self'
     in
     {
       enable = true;
@@ -123,7 +124,7 @@
         # regardless:
         #   - https://gitlab.com/interception/linux/plugins/dual-function-keys/-/issues/31#note_725827382
         #   - https://gitlab.com/interception/linux/tools#hybrid-device-configurations
-        - JOB: ${mux} -i caps2esc | ${caps2esc} -m 1 | ${uinput} -d /dev/input/by-path/platform-i8042-serio-0-event-kbd
+        - JOB: ${mux} -i caps2esc | ${caps2esc} -m 1 | ${print2superL} | ${uinput} -d /dev/input/by-path/platform-i8042-serio-0-event-kbd
 
         # Match devices that look like a mouse. Copied from
         # https://gitlab.com/interception/linux/plugins/dual-function-keys#multiple-devices
