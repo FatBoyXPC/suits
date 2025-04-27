@@ -6,6 +6,6 @@ sudo ghc-pkg recache
 xmonad --recompile
 check-packages
 
-# cd into my-nix
+# cd into suits project root
 # nix flake update
-# nix build
+# nix build .#my-nix.wrapped --out-link dotfiles/my-nix/result/

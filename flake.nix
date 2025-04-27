@@ -1,15 +1,34 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  inputs.disko.url = "github:nix-community/disko";
-  inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { nixpkgs, disko, self, ... }:
+    # <<< TO DO: clean this shit up, stolen from dotfiles
+    shtuff.url = "github:jfly/shtuff";
+    with-alacritty.inputs.nixpkgs.follows = "nixpkgs";
+    with-alacritty.url = "github:FatBoyXPC/with-alacritty";
+    nixgl.url = "github:nix-community/nixGL";
+  };
+
+  outputs = { nixpkgs, disko, self, ... }@inputs:
     let
       inherit (nixpkgs) lib;
       hosts = lib.filterAttrs (hostname: filetype: filetype == "directory") (builtins.readDir ./hosts);
 
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      pkgArgs = { flake = self; };
+      #pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "slack"
+            "steam"
+            "steam-unwrapped"
+            "uhk-agent"
+          ];
+      };
+      pkgArgs = { flake = self; inherit inputs; };
       packages = lib.filesystem.packagesFromDirectoryRecursive {
         callPackage = pkgs.newScope pkgArgs;
         directory = ./packages;

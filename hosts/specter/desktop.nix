@@ -1,10 +1,9 @@
 { lib, pkgs, ... }:
 
 {
-   environment.loginShellInit = let startxScript = pkgs.writeShellScript "startxAtLogin" ''
+   programs.zsh.loginShellInit = ''
      [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
    '';
-   in "exec ${toString startxScript}";
 
   programs.nm-applet.enable = true;
 
@@ -19,6 +18,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      enableConfiguredRecompile = true;
       #config = builtins.readFile ../../packages/xmonad/xmonad.hs;
     };
     autoRepeatDelay = 300;
