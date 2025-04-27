@@ -50,6 +50,7 @@ symlinkJoin {
     bc
     calibre
     chromiumAlt
+    flake.packages.x86_64-linux.colorscheme
     darktable
     diff-so-fancy
     direnv
