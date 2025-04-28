@@ -98,6 +98,7 @@
 
   services.getty.greetingLine = ''If found, please email fatboyxpc@gmail.com immediately! \l'';
   services.openssh.enable = true;
+  services.udisks2.enable = true;
 
   services.interception-tools =
     let
