@@ -1,17 +1,16 @@
 {
 
-   programs.direnv = {
-     enable = true;
-     nix-direnv.enable = true;
-   };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
-   environment.variables = {
-     EDITOR = "nvim";
-   };
+  environment.variables = {
+    EDITOR = "nvim";
+  };
 
-   programs.zsh = {
-      enable = true;
-      ohMyZsh.enable = true;
-   };
+  programs.zsh = {
+    enable = true;
+    ohMyZsh.enable = true;
+  };
 }
-

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 # This file is almost a direct copy of the example here:
 # https://nixos.wiki/wiki/Accelerated_Video_Playback
@@ -12,5 +18,7 @@
       libvdpau-va-gl
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; }; # Force intel-vaapi-driver
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "i965";
+  }; # Force intel-vaapi-driver
 }

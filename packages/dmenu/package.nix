@@ -1,4 +1,8 @@
-{ dmenu, symlinkJoin, makeWrapper }:
+{
+  dmenu,
+  symlinkJoin,
+  makeWrapper,
+}:
 
 symlinkJoin {
   name = "dmenu_run";

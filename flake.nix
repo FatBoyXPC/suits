@@ -11,7 +11,13 @@
     nixgl.url = "github:nix-community/nixGL";
   };
 
-  outputs = { nixpkgs, disko, self, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      disko,
+      self,
+      ...
+    }@inputs:
     let
       inherit (nixpkgs) lib;
       hosts = lib.filterAttrs (hostname: filetype: filetype == "directory") (builtins.readDir ./hosts);
@@ -27,26 +33,35 @@
             "uhk-agent"
           ];
       };
-      pkgArgs = { flake = self; inherit inputs; };
+      pkgArgs = {
+        flake = self;
+        inherit inputs;
+      };
       packages = lib.filesystem.packagesFromDirectoryRecursive {
         callPackage = pkgs.newScope pkgArgs;
         directory = ./packages;
       };
     in
     {
-      nixosConfigurations = builtins.mapAttrs (hostname: filetype: lib.nixosSystem {
-        system = "x86_64-linux"; # <<< TODO: live in host rather than be hardcoded
-        modules = [
-          disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
-          (./hosts + "/${hostname}/configuration.nix")
-        ];
-        specialArgs = { flake = self; };
-      }) hosts;
+      nixosConfigurations = builtins.mapAttrs (
+        hostname: filetype:
+        lib.nixosSystem {
+          system = "x86_64-linux"; # <<< TODO: live in host rather than be hardcoded
+          modules = [
+            disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
+            (./hosts + "/${hostname}/configuration.nix")
+          ];
+          specialArgs = {
+            flake = self;
+          };
+        }
+      ) hosts;
 
       packages.x86_64-linux = packages; # <<< TODO: do not hardcode the system here, either!
       devShells.x86_64-linux.default = pkgs.mkShell {
         packages = [
           pkgs.nixos-rebuild
+          pkgs.nixfmt-tree
         ];
       };
     };

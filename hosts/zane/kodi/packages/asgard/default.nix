@@ -1,4 +1,8 @@
-{ fetchzip, lib, buildKodiAddon }:
+{
+  fetchzip,
+  lib,
+  buildKodiAddon,
+}:
 
 buildKodiAddon rec {
   pname = "asgard";
@@ -12,12 +16,12 @@ buildKodiAddon rec {
   };
 
   #propagatedBuildInputs = [
-    #bottle
-    #requests
-    ## This plugin optionally depends on tubed or youtube. Both plugins seem to
-    ## have issues with api keys, pick your poison.
-    ## tubed
-    #youtube
+  #bottle
+  #requests
+  ## This plugin optionally depends on tubed or youtube. Both plugins seem to
+  ## have issues with api keys, pick your poison.
+  ## tubed
+  #youtube
   #];
 
   meta = with lib; {

@@ -2,21 +2,26 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, flake, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  flake,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./desktop.nix
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../nixos-modules/single-ext4.nix
-      ./polybar
-      ./shell.nix
-      #./gpu.nix
+  imports = [
+    ./desktop.nix
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../nixos-modules/single-ext4.nix
+    ./polybar
+    ./shell.nix
+    #./gpu.nix
 
-      #./kodi
-    ];
+    #./kodi
+  ];
 
   boot.loader.systemd-boot.enable = true;
 
@@ -24,7 +29,7 @@
 
   networking.hostName = "specter"; # Define your hostname.
 
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -43,9 +48,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -75,10 +77,12 @@
     ];
   };
 
-
   security.sudo.wheelNeedsPassword = false;
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   # Flakes!
   nix.settings.experimental-features = [
@@ -88,13 +92,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-     flake.packages.x86_64-linux.my-nix # <<< TODO: Change to self'
-     direnv
-     git
-     neovim
-     xorg.xbacklight
-   ];
+  environment.systemPackages = with pkgs; [
+    flake.packages.x86_64-linux.my-nix # <<< TODO: Change to self'
+    direnv
+    git
+    neovim
+    xorg.xbacklight
+  ];
 
   services.getty.greetingLine = ''If found, please email fatboyxpc@gmail.com immediately! \l'';
   services.openssh.enable = true;
@@ -146,11 +150,11 @@
       '';
     };
 
-   #nix.gc = {
-     #automatic = true;
-     #dates = "weekly";
-     #options = "--delete-older-than 30d";
-   #};
+  #nix.gc = {
+  #automatic = true;
+  #dates = "weekly";
+  #options = "--delete-older-than 30d";
+  #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -193,4 +197,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-

@@ -2,18 +2,23 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./disk-config.nix
-      ./gpu.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./disk-config.nix
+    ./gpu.nix
 
-      ./desktop.nix
-      ./kodi
-    ];
+    ./desktop.nix
+    ./kodi
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -30,7 +35,7 @@
 
   networking.wireless = {
     enable = true;
-    environmentFile = "/etc/secrets/wireless.env";
+    environmentFile = "/etc/secrets/wireless.env"; # <<< TODO: change to secretsFile - got build failure after formatting.
     networks = {
       "@}--;--'---" = {
         psk = "@PSK_HOME@";
@@ -55,9 +60,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -88,7 +90,10 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -141,4 +146,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

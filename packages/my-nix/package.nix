@@ -1,4 +1,10 @@
-{ symlinkJoin, pkgs, inputs, flake, wrapsWithNixGl ? false }:
+{
+  symlinkJoin,
+  pkgs,
+  inputs,
+  flake,
+  wrapsWithNixGl ? false,
+}:
 
 let
   shtuff = inputs.shtuff.packages.x86_64-linux.default; # <<< TODO: Change to inputs'
@@ -30,16 +36,13 @@ let
     name = "slack";
     paths = [ pkgs.slack ];
     buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/slack \
-          --set BROWSER chromium
-      '';
-    };
-  maybe-wrap-nixgl = if wrapsWithNixGl
-    then
-      pkgs.callPackage ./wrap-nixgl.nix { inherit inputs; }
-    else
-      p: p;
+    postBuild = ''
+      wrapProgram $out/bin/slack \
+        --set BROWSER chromium
+    '';
+  };
+  maybe-wrap-nixgl =
+    if wrapsWithNixGl then pkgs.callPackage ./wrap-nixgl.nix { inherit inputs; } else p: p;
   withAlacrittyAlt = maybe-wrap-nixgl with-alacritty;
 in
 
@@ -68,7 +71,7 @@ symlinkJoin {
     mycliAlt
     neovim
     networkmanagerapplet
-    (pass.override { dmenu = flake.packages.x86_64-linux.dmenu; } ) # <<< TODO: Change to self'
+    (pass.override { dmenu = flake.packages.x86_64-linux.dmenu; }) # <<< TODO: Change to self'
     polybarFull
     shtuff
     silver-searcher

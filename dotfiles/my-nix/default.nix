@@ -1,7 +1,12 @@
-{ symlinkJoin, pkgs, shtuff, with-alacritty }:
+{
+  symlinkJoin,
+  pkgs,
+  shtuff,
+  with-alacritty,
+}:
 
 let
-  autoperipherals = pkgs.callPackage ./packages/autoperipherals {};
+  autoperipherals = pkgs.callPackage ./packages/autoperipherals { };
   chromiumAlt = symlinkJoin {
     name = "chromium";
     paths = [ pkgs.chromium ];
@@ -15,7 +20,7 @@ let
         --set GOOGLE_DEFAULT_CLIENT_SECRET OTJgUOQcT7lO7GsGZq2G4IlT
     '';
   };
-  flameshotAlt = pkgs.callPackage ./packages/flameshot {};
+  flameshotAlt = pkgs.callPackage ./packages/flameshot { };
   mycliAlt = pkgs.mycli.overridePythonAttrs {
     patches = [
       (pkgs.fetchpatch {
@@ -28,13 +33,13 @@ let
     name = "slack";
     paths = [ pkgs.slack ];
     buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/slack \
-          --set BROWSER chromium
-      '';
-    };
+    postBuild = ''
+      wrapProgram $out/bin/slack \
+        --set BROWSER chromium
+    '';
+  };
   withAlacrittyAlt = wrap-nixgl with-alacritty;
-  wrap-nixgl = pkgs.callPackage ./wrap-nixgl.nix {};
+  wrap-nixgl = pkgs.callPackage ./wrap-nixgl.nix { };
 in
 
 symlinkJoin {
