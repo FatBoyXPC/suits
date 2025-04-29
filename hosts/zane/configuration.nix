@@ -35,10 +35,10 @@
 
   networking.wireless = {
     enable = true;
-    environmentFile = "/etc/secrets/wireless.env"; # <<< TODO: change to secretsFile - got build failure after formatting.
+    secretsFile = "/etc/secrets/wireless.env";
     networks = {
       "@}--;--'---" = {
-        psk = "@PSK_HOME@";
+        pskRaw = "ext:psk_home";
       };
     };
   };
