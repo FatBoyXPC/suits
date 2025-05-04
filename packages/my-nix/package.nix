@@ -12,7 +12,15 @@ let
   autoperipherals = flake.packages.x86_64-linux.autoperipherals; # <<< TODO: Change to self'
   chromiumAlt = symlinkJoin {
     name = "chromium";
-    paths = [ pkgs.chromium ];
+    paths = [ (pkgs.chromium.override {
+      commandLineArgs = [
+        "--enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
+	"--enable-features=VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport"
+	"--enable-features=UseMultiPlaneFormatForHardwareVideo"
+	"--ignore-gpu-blocklist"
+	"--enable-zero-copy"
+      ];
+    }) ];
     buildInputs = [ pkgs.makeWrapper ];
     # Adding these as command line flags doesn't seem to work. Perhaps
     # because we don't have this patch?
