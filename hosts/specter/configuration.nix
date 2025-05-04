@@ -7,6 +7,7 @@
   lib,
   pkgs,
   flake,
+  inputs,
   ...
 }:
 
@@ -21,6 +22,12 @@
     #./gpu.nix
 
     #./kodi
+    inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.james = ./home.nix;
+    }
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -163,6 +170,10 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.gnupg.agent.enable = true;
+  programs.ssh = {
+    startAgent = true;
+  };
 
   # List services that you want to enable:
 

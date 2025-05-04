@@ -1,0 +1,35 @@
+{
+  ".bash_aliases" = "aliases";
+  #".config/bat" = "config/bat";
+  #".config/chromium-flags.conf" = "config/chromium-flags.conf";
+  #".config/direnv/direnv.toml" = "config/direnv.toml";
+  #".config/dunst" = "config/dunst";
+  #".config/fontconfig" = "config/fontconfig";
+  ".config/gtk-3.0" = "config/gtk-3.0";
+  #".config/mimeapps.list" = "config/mimeapps.list"; # <<< TODO: is this still relevant?
+  #".config/nvim" = "vim";
+  #".config/phpactor" = "config/phpactor";
+  #".config/polybar" = "config/polybar";
+  #".config/termite" = "config/termite";
+  #".dircolors" = "dircolors";
+  #".floorc.json" = "floorc.json";
+  ".gitconfig" = "gitconfig";
+  ".gitignore_global" = "gitignore_global";
+  #".git_templates" = "git_templates";
+  #".myclirc" = "myclirc";
+  #".pathrc" = "pathrc";
+  #".p10k.zsh" = "p10k.zsh";
+  ".ssh/config" = "ssh_config";
+  #".tmux.conf" = "tmux.conf";
+  #".vim" = "vim";
+  #".xinitrc" = "xinitrc";
+  #".Xmodmap" = "Xmodmap";
+  #".xmonad" = "xmonad";
+  #".Xresources" = "Xresources";
+  #".weechat" = "weechat";
+  #".zshrc" = "zshrc";
+  #"bin" = "bin";
+  #"dev/aware3/web/project.vim" = "vim/a3.vim";
+  #"dev/ay-backend/project.vim" = "vim/ally.vim";
+  #"dev/ct-api/project.vim" = "vim/caretime.vim";
+}

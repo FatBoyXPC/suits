@@ -3,6 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # <<< TO DO: clean this shit up, stolen from dotfiles
     shtuff.url = "github:jfly/shtuff";
@@ -33,12 +35,12 @@
             "uhk-agent"
           ];
       };
-      pkgArgs = {
+      specialArgs = {
         flake = self;
         inherit inputs;
       };
       packages = lib.filesystem.packagesFromDirectoryRecursive {
-        callPackage = pkgs.newScope pkgArgs;
+        callPackage = pkgs.newScope specialArgs;
         directory = ./packages;
       };
     in
@@ -51,9 +53,7 @@
             disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
             (./hosts + "/${hostname}/configuration.nix")
           ];
-          specialArgs = {
-            flake = self;
-          };
+	  inherit specialArgs;
         }
       ) hosts;
 
