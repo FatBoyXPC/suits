@@ -126,7 +126,7 @@
       mux = "${pkgs.interception-tools}/bin/mux";
       intercept = "${pkgs.interception-tools}/bin/intercept";
       uinput = "${pkgs.interception-tools}/bin/uinput";
-      caps2esc = "${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc";
+      caps2esc = "${flake.packages.x86_64-linux.interception-k2k}/bin/caps2esc"; # <<<< TODO: Change to self'
       print2superL = "${flake.packages.x86_64-linux.interception-k2k}/bin/print2superL"; # <<<< TODO: Change to self'
     in
     {
