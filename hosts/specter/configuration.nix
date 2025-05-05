@@ -110,9 +110,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     flake.packages.x86_64-linux.my-nix # <<< TODO: Change to self'
-    direnv
-    git
-    neovim
+    direnv # <<< This is duplicated because of my-nix
+    git # <<< This is duplicated because of my-nix
+    neovim # <<< This is duplicated because of my-nix
     xorg.xbacklight
   ];
 
