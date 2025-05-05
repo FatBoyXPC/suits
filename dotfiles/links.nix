@@ -24,7 +24,8 @@
   #".vim" = "vim";
   #".xinitrc" = "xinitrc";
   #".Xmodmap" = "Xmodmap";
-  #".xmonad" = "xmonad";
+  ".xmonad/xmonad.hs" = "xmonad/xmonad.hs";
+  ".xmonad/lib" = "xmonad/lib";
   #".Xresources" = "Xresources";
   #".weechat" = "weechat";
   ".zshrc" = "zshrc";
