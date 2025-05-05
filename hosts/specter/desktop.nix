@@ -57,7 +57,7 @@
     ## whatsoever.
     #path = lib.mkForce [ ];
     #serviceConfig = {
-    #ExecStart = "${flake'.packages.dunst}/bin/dunst";
+    #ExecStart = "${self'.packages.dunst}/bin/dunst";
     #};
     #};
     "numlock-on" = {

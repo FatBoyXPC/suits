@@ -1,7 +1,5 @@
 {
   lib,
-  flake',
-  flake,
   config,
   ...
 }:

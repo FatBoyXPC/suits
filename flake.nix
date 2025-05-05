@@ -36,8 +36,9 @@
           ];
       };
       specialArgs = {
-        flake = self;
         inherit inputs;
+	inherit self;
+	self'.packages = self.packages.x86_64-linux;
       };
       packages = lib.filesystem.packagesFromDirectoryRecursive {
         callPackage = pkgs.newScope specialArgs;

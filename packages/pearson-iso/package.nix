@@ -1,9 +1,9 @@
 # Patterned off of https://wiki.nixos.org/wiki/Creating_a_NixOS_live_CD
 
-{ flake }:
+{ self }:
 
 let
-  sys = flake.nixosConfigurations.pearson.extendModules {
+  sys = self.nixosConfigurations.pearson.extendModules {
     modules = [
       (
         { modulesPath, ... }:

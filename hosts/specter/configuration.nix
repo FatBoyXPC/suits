@@ -6,7 +6,7 @@
   config,
   lib,
   pkgs,
-  flake,
+  self',
   inputs,
   ...
 }:
@@ -109,7 +109,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    flake.packages.x86_64-linux.my-nix # <<< TODO: Change to self'
+    self'.packages.my-nix
     direnv # <<< This is duplicated because of my-nix
     git # <<< This is duplicated because of my-nix
     neovim # <<< This is duplicated because of my-nix
@@ -126,8 +126,8 @@
       mux = "${pkgs.interception-tools}/bin/mux";
       intercept = "${pkgs.interception-tools}/bin/intercept";
       uinput = "${pkgs.interception-tools}/bin/uinput";
-      caps2esc = "${flake.packages.x86_64-linux.interception-k2k}/bin/caps2esc"; # <<<< TODO: Change to self'
-      print2superL = "${flake.packages.x86_64-linux.interception-k2k}/bin/print2superL"; # <<<< TODO: Change to self'
+      caps2esc = "${self'.packages.interception-k2k}/bin/caps2esc";
+      print2superL = "${self'.packages.interception-k2k}/bin/print2superL";
     in
     {
       enable = true;

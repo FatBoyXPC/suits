@@ -1,13 +1,13 @@
 # Patterned off of https://wiki.nixos.org/wiki/Netboot
 
 {
-  flake,
+  self,
   pixiecore,
   writeShellApplication,
 }:
 
 let
-  sys = flake.nixosConfigurations.pearson.extendModules {
+  sys = self.nixosConfigurations.pearson.extendModules {
     modules = [
       (
         { modulesPath, ... }:

@@ -2,14 +2,14 @@
   symlinkJoin,
   pkgs,
   inputs,
-  flake,
+  self',
   wrapsWithNixGl ? false,
 }:
 
 let
   shtuff = inputs.shtuff.packages.x86_64-linux.default; # <<< TODO: Change to inputs'
   with-alacritty = inputs.with-alacritty.packages.x86_64-linux.default; # <<< TODO: Change to inputs'
-  autoperipherals = flake.packages.x86_64-linux.autoperipherals; # <<< TODO: Change to self'
+  autoperipherals = self'.packages.autoperipherals;
   chromiumAlt = symlinkJoin {
     name = "chromium";
     paths = [ (pkgs.chromium.override {
@@ -31,7 +31,7 @@ let
         --set GOOGLE_DEFAULT_CLIENT_SECRET OTJgUOQcT7lO7GsGZq2G4IlT
     '';
   };
-  flameshotAlt = flake.packages.x86_64-linux.flameshot; # <<< TODO: Change to self'
+  flameshotAlt = self'.packages.flameshot;
   mycliAlt = pkgs.mycli.overridePythonAttrs {
     patches = [
       (pkgs.fetchpatch {
@@ -61,7 +61,7 @@ symlinkJoin {
     bc
     calibre
     chromiumAlt
-    flake.packages.x86_64-linux.colorscheme
+    self'.packages.colorscheme
     darktable
     diff-so-fancy
     direnv
@@ -79,7 +79,7 @@ symlinkJoin {
     mycliAlt
     neovim
     networkmanagerapplet
-    (pass.override { dmenu = flake.packages.x86_64-linux.dmenu; }) # <<< TODO: Change to self'
+    (pass.override { dmenu = self'.packages.dmenu; })
     polybarFull
     shtuff
     silver-searcher
@@ -94,5 +94,5 @@ symlinkJoin {
     withAlacrittyAlt
     xcwd
   ];
-  passthru.wrapped = flake.packages.x86_64-linux.my-nix.override { wrapsWithNixGl = true; }; # <<< TODO Change to self'
+  passthru.wrapped = self'.packages.my-nix.override { wrapsWithNixGl = true; };
 }
