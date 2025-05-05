@@ -18,7 +18,7 @@
   #".git_templates" = "git_templates";
   #".myclirc" = "myclirc";
   #".pathrc" = "pathrc";
-  #".p10k.zsh" = "p10k.zsh";
+  ".p10k.zsh" = "p10k.zsh";
   ".ssh/config" = "ssh_config";
   #".tmux.conf" = "tmux.conf";
   #".vim" = "vim";
@@ -27,7 +27,7 @@
   #".xmonad" = "xmonad";
   #".Xresources" = "Xresources";
   #".weechat" = "weechat";
-  #".zshrc" = "zshrc";
+  ".zshrc" = "zshrc";
   #"bin" = "bin";
   #"dev/aware3/web/project.vim" = "vim/a3.vim";
   #"dev/ay-backend/project.vim" = "vim/ally.vim";

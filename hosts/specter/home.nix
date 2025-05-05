@@ -1,6 +1,10 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [
+    ./omz.nix
+  ];
+
   home.file = builtins.mapAttrs (
     dotfile: source:
       { source = ../../dotfiles/${source}; }
