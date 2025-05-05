@@ -37,8 +37,8 @@
       };
       specialArgs = {
         inherit inputs;
-	inherit self;
-	self'.packages = self.packages.x86_64-linux;
+        inherit self;
+        self'.packages = self.packages.x86_64-linux;
       };
       packages = lib.filesystem.packagesFromDirectoryRecursive {
         callPackage = pkgs.newScope specialArgs;
@@ -54,7 +54,7 @@
             disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
             (./hosts + "/${hostname}/configuration.nix")
           ];
-	  inherit specialArgs;
+          inherit specialArgs;
         }
       ) hosts;
 
