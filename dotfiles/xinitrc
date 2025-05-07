@@ -49,4 +49,4 @@ fi
 xsetroot -cursor_name left_ptr
 
 # Now, finally, start xmonad
-exec xmonad
+SHLVL=0 exec xmonad
