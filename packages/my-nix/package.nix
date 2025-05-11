@@ -33,6 +33,8 @@ let
         --set GOOGLE_DEFAULT_CLIENT_SECRET OTJgUOQcT7lO7GsGZq2G4IlT
     '';
   };
+  colorschemeAlt = self'.packages.colorscheme;
+  dmenuAlt = self'.packages.dmenu;
   flameshotAlt = self'.packages.flameshot;
   mycliAlt = pkgs.mycli.overridePythonAttrs {
     patches = [
@@ -43,6 +45,7 @@ let
     ];
   };
   neovimAlt = self'.packages.neovim;
+  passAlt = (pkgs.pass.override { dmenu = dmenuAlt; });
   slackAlt = symlinkJoin {
     name = "slack";
     paths = [ pkgs.slack ];
@@ -64,11 +67,11 @@ symlinkJoin {
     bc
     calibre
     chromiumAlt
-    self'.packages.colorscheme
+    colorschemeAlt
     darktable
     diff-so-fancy
     direnv
-    dmenu
+    dmenuAlt
     docker
     docker-compose
     flameshotAlt
@@ -82,7 +85,7 @@ symlinkJoin {
     mycliAlt
     neovimAlt
     networkmanagerapplet
-    (pass.override { dmenu = self'.packages.dmenu; })
+    passAlt
     polybarFull
     shtuff
     silver-searcher
