@@ -1,5 +1,3 @@
-local Float = require "plenary.window.float"
-
 vim.cmd([[
     augroup LspPhpactor
       autocmd!
@@ -10,6 +8,8 @@ vim.cmd([[
       autocmd Filetype php command! -nargs=0 LspPhpactorBlackfireFinish lua LspPhpactorBlackfireFinish()
     augroup END
 ]])
+
+local Float = require "plenary.window.float"
 
 local function showWindow(title, syntax, contents)
     local out = {};

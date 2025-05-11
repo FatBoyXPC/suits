@@ -112,7 +112,6 @@
     self'.packages.my-nix
     direnv # <<< This is duplicated because of my-nix
     git # <<< This is duplicated because of my-nix
-    neovim # <<< This is duplicated because of my-nix
     psmisc
     xorg.xbacklight
   ];

@@ -42,6 +42,7 @@ let
       })
     ];
   };
+  neovimAlt = self'.packages.neovim;
   slackAlt = symlinkJoin {
     name = "slack";
     paths = [ pkgs.slack ];
@@ -79,7 +80,7 @@ symlinkJoin {
     kitty # only because alacritty was slow <<<
     libreoffice-fresh
     mycliAlt
-    neovim
+    neovimAlt
     networkmanagerapplet
     (pass.override { dmenu = self'.packages.dmenu; })
     polybarFull

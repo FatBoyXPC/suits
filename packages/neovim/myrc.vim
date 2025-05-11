@@ -1,6 +1,6 @@
-runtime! functions.vim
-runtime! plugins.vim
-runtime! mappings.vim
+" runtime! functions.vim
+" runtime! plugins.vim
+" runtime! mappings.vim
 
 " General: {
     syntax on
@@ -12,6 +12,7 @@ runtime! mappings.vim
     set wildmode=list:longest,full
     set backspace=indent,eol,start
     set nobackup
+    set mouse=
     let &directory=g:configPath . '/swap//'
     let &undodir=g:configPath . '/undo//'
     set undofile
@@ -20,6 +21,7 @@ runtime! mappings.vim
     "set ttimeout
     "set ttimeoutlen=50
     let g:shtuff_receiver = getcwd()
+    set spell
     set tags^=./.git/tags
 
     " maybe?
