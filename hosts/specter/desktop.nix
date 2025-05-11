@@ -1,6 +1,18 @@
 { lib, pkgs, ... }:
 
 {
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      nerd-fonts.ubuntu-mono # My preferred monospace font.
+      noto-fonts-monochrome-emoji # We use this in `polybar` to keep everything nice and black and white.
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "UbuntuMono Nerd Font Mono" ];
+      };
+    };
+  };
   programs.zsh.loginShellInit = ''
     [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && SHLVL=0 exec startx
   '';
@@ -10,10 +22,13 @@
   services.xserver = {
     enable = true;
     autorun = true;
-    displayManager.startx = {
-      enable = true;
-      generateScript = true;
-      #execOnLogin = true;
+    displayManager = {
+      startx = {
+        enable = true;
+        generateScript = true;
+        #execOnLogin = true; # <<< TODO!
+      };
+      sessionCommands = "${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr";
     };
     windowManager.xmonad = {
       enable = true;

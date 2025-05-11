@@ -117,6 +117,14 @@
   ];
 
   services.getty.greetingLine = ''If found, please email fatboyxpc@gmail.com immediately! \l'';
+
+  services.logind = {
+    lidSwitch = "ignore";
+    extraConfig = ''
+      HandlePowerKey=suspend
+    '';
+  };
+
   services.openssh.enable = true;
   services.udisks2.enable = true;
 
