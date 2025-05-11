@@ -11,7 +11,7 @@ symlinkJoin {
   postBuild = ''
     for prog in dmenu dmenu_run; do
       wrapProgram $out/bin/$prog \
-        --add-flags "-fn 'Ubuntu Mono Regular:size=8:bold:antialias=true'"
+        --add-flags "-fn 'UbuntuMono Nerd Font:size=18'"
     done
   '';
 }
