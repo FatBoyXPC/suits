@@ -43,6 +43,7 @@
     set background=dark
     colorscheme dim
     highlight ColorColumn ctermfg=8 ctermbg=7
+    highlight NonText ctermfg=8
     highlight TabLineFill cterm=NONE
     set number
     set relativenumber
