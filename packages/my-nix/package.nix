@@ -34,6 +34,14 @@ let
     '';
   };
   colorschemeAlt = self'.packages.colorscheme;
+  diffHighlightAlt = pkgs.symlinkJoin {
+    name = "diff-highlight";
+    paths = [ pkgs.git ];
+    postBuild = ''
+      mkdir -p $out/bin
+      ln -s ${pkgs.git}/share/git/contrib/diff-highlight/diff-highlight $out/bin/diff-highlight
+    '';
+  };
   dmenuAlt = self'.packages.dmenu;
   flameshotAlt = self'.packages.flameshot;
   mycliAlt = pkgs.mycli.overridePythonAttrs {
@@ -70,7 +78,7 @@ symlinkJoin {
     colorschemeAlt
     darktable
     diff-so-fancy
-    direnv
+    diffHighlightAlt
     dmenuAlt
     docker
     docker-compose
