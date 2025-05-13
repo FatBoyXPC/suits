@@ -99,8 +99,6 @@ telescope.setup {
             i = {
                 ['<C-a>'] = actions.toggle_all,
                 ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
-                ["<C-j>"] = require('telescope.actions').move_selection_next,
-                ["<C-k>"] = require('telescope.actions').move_selection_previous,
             },
         },
         file_ignore_patterns = { 'node_modules', '.DS_Store', 'resources/dist', '.git/', 'storage/framework' },
@@ -139,7 +137,7 @@ telescope.setup {
             prompt_title = 'Live Ripgrep',
             mappings = {
                 i = {
-                    ["<C-k>"] = require('telescope-live-grep-args.actions').quote_prompt(),
+                    ["''"] = require('telescope-live-grep-args.actions').quote_prompt(),
                 }
             }
         }
@@ -149,6 +147,12 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('live_grep_args')
 telescope.load_extension('ui-select')
+
+local live_grep_args = require("telescope-live-grep-args.shortcuts")
+
+vim.keymap.set("n", "<leader>/", telescope.extensions.live_grep_args.live_grep_args)
+vim.keymap.set("v", "<leader>/", live_grep_args.grep_visual_selection)
+vim.keymap.set("n", "<leader>*", live_grep_args.grep_word_under_cursor)
 
 require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },

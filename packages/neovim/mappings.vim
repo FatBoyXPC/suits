@@ -101,9 +101,6 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
 
 " Search: {
     nnoremap <silent><leader>t/ :set invhlsearch<CR>
-    nmap <Leader>/ <Plug>AgRawSearch
-    vmap <Leader>/ <Plug>AgRawVisualSelection
-    nmap <Leader>* <Plug>AgRawWordUnderCursor
 " }
 
 " UI: {
