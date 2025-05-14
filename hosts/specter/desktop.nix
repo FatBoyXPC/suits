@@ -85,13 +85,5 @@
         ExecStart = "${pkgs.numlockx}/bin/numlockx on";
       };
     };
-    #polybar = {
-    #enable = true;
-    #wantedBy = [ "graphical-session.target" ];
-    #partOf = [ "graphical-session.target" ];
-    #serviceConfig = {
-    #ExecStart = "${pkgs.polybarFull}/bin/polybar --config=${polybarConfig}";
-    #};
-    #};
   };
 }
