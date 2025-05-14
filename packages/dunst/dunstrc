@@ -1,0 +1,82 @@
+[global]
+    ### Display ###
+    monitor = 0
+    follow = mouse
+    width = 400
+    height = 300
+    indicate_hidden = true
+    shrink = false
+    transparency = 0
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    frame_width = 3
+    frame_color = "#aaaaaa"
+    separator_color = frame
+    sort = true
+    idle_threshold = 120
+    # The default scale is 0, which tries to autodetect. Leave this as 1, we'll
+    # handle it ourselves.
+    scale = 1
+
+    ### Text ###
+    font = Monospace 14
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = true
+    ignore_newline = false
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = true
+
+    ### Icons ###
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    max_icon_size = 128
+
+    ### History ###
+    sticky_history = true
+    history_length = 20
+
+    ### Misc/Advanced ###
+    dmenu = @dmenu@/bin/dmenu -p dunst:
+    browser = @xdg_utils@/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+
+    ### Legacy
+    force_xinerama = false
+
+[experimental]
+    per_monitor_dpi = false
+
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the "#" and following would be interpreted as a comment.
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
+
+[urgency_normal]
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
+
+### Scripting
+
+# Make the handling of transient notifications more strict by making them not
+# be placed in history.
+[transient_history_ignore]
+    match_transient = yes
+    history_ignore = yes

@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, self', ... }:
 
 {
   fonts = {
@@ -40,6 +40,10 @@
     autoRepeatInterval = 30;
   };
 
+  environment.systemPackages = [
+    pkgs.dunst
+  ];
+
   systemd.user.services = {
     "xsettingsd" = {
       enable = true;
@@ -58,23 +62,23 @@
         ExecStart = "${pkgs.pasystray}/bin/pasystray";
       };
     };
-    #"dunst" = {
-    #enable = true;
-    #wantedBy = [ "graphical-session.target" ];
-    #partOf = [ "graphical-session.target" ];
-    ## `stage2ServiceConfig` in `nixos/lib/systemd-lib.nix` really wants to give
-    ## us a default `PATH`. However, dunst currently uses `xdg-open` to fire up a
-    ## browser, and *that* needs a PATH with whatever default browser we've
-    ## got set up. So, it's better to use systemctl's "user environment block"
-    ## (populated by xsessionWrapper when it calls `systemctl
-    ## import-environment`), because that'll have the right PATH and BROWSER,
-    ## but to inherit that PATH, we have to make sure we don't specify a PATH
-    ## whatsoever.
-    #path = lib.mkForce [ ];
-    #serviceConfig = {
-    #ExecStart = "${self'.packages.dunst}/bin/dunst";
-    #};
-    #};
+    "dunst" = {
+      enable = true;
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+    # `stage2ServiceConfig` in `nixos/lib/systemd-lib.nix` really wants to give
+    # us a default `PATH`. However, dunst currently uses `xdg-open` to fire up a
+    # browser, and *that* needs a PATH with whatever default browser we've
+    # got set up. So, it's better to use systemctl's "user environment block"
+    # (populated by xsessionWrapper when it calls `systemctl
+    # import-environment`), because that'll have the right PATH and BROWSER,
+    # but to inherit that PATH, we have to make sure we don't specify a PATH
+    # whatsoever.
+    path = lib.mkForce [ ];
+    serviceConfig = {
+      ExecStart = "${self'.packages.dunst}/bin/dunst";
+    };
+  };
     "numlock-on" = {
       enable = true;
       wantedBy = [ "graphical-session.target" ];
