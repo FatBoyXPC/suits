@@ -1,22 +1,39 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    treefmt-nix = {
+
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:numtide/treefmt-nix";
     };
 
-    # <<< TO DO: clean this shit up, stolen from dotfiles
-    shtuff.url = "github:jfly/shtuff";
-    with-alacritty.inputs.nixpkgs.follows = "nixpkgs";
-    with-alacritty.url = "github:FatBoyXPC/with-alacritty";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    shtuff = {
+      url = "github:jfly/shtuff";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    with-alacritty = {
+      url = "github:FatBoyXPC/with-alacritty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixgl.url = "github:nix-community/nixGL";
   };
 
