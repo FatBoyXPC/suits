@@ -2,13 +2,14 @@
   symlinkJoin,
   pkgs,
   inputs,
+  inputs',
   self',
   wrapsWithNixGl ? false,
 }:
 
 let
-  shtuff = inputs.shtuff.packages.x86_64-linux.default; # <<< TODO: Change to inputs'
-  with-alacritty = inputs.with-alacritty.packages.x86_64-linux.default; # <<< TODO: Change to inputs'
+  shtuff = inputs'.shtuff.packages.default;
+  with-alacritty = inputs'.with-alacritty.packages.default;
   autoperipherals = self'.packages.autoperipherals;
   chromiumAlt = symlinkJoin {
     name = "chromium";
