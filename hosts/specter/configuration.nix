@@ -110,7 +110,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     self'.packages.my-nix
-    direnv # <<< This is duplicated because of my-nix
     git # <<< This is duplicated because of my-nix
     psmisc
     xorg.xbacklight
