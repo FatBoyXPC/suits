@@ -5,8 +5,8 @@ nnoremap <Leader>tw :w<CR>:call system("fat-rerunner " . shellescape(g:shtuff_re
 nnoremap <Leader>tw "ayy:call system("shtuff into " . shellescape(g:shtuff_receiver) . ' ' . shellescape(trim("<C-r>a")))<CR>
 vnoremap <Leader>tw "ayiw:call agriculture#trim_and_escape_register_a()<CR>:call system("shtuff into " . shellescape(g:shtuff_receiver) . ' ' . <C-r>a)<CR>
 
-nnoremap <Leader>c :update\|bd<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>c :update\|Bd<CR>
+nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
 
 nnoremap <Leader>mp :MarkdownPreview<CR>

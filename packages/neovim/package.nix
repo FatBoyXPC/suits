@@ -22,6 +22,7 @@ inputs.nixvim.legacyPackages.${system}.makeNixvim {
   plugins =
     builtins.listToAttrs (
       map (x: (lib.nameValuePair x { enable = true; })) [
+        "bufdelete"
         "cmp"
         "cmp-buffer"
         "cmp-cmdline"
