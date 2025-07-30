@@ -69,7 +69,7 @@ symlinkJoin {
     calibre
     chromiumAlt
     colorschemeAlt
-    darktkble
+    darktable
     diff-so-fancy
     diffHighlightAlt
     dmenuAlt
