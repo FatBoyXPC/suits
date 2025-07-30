@@ -30,6 +30,10 @@
     }
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+  ];
+
   boot.loader.systemd-boot.enable = true;
 
   disko.devices.disk.main.device = "/dev/nvme0n1";
@@ -109,6 +113,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    darktable
     self'.packages.my-nix
     psmisc
     xorg.xbacklight
