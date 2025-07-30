@@ -30,6 +30,12 @@
     }
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+  ];
+
   boot.loader.systemd-boot.enable = true;
 
   disko.devices.disk.main.device = "/dev/nvme0n1";
@@ -42,8 +48,8 @@
   time.timeZone = "America/New_York";
 
   # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # networking.proxy.default = "http://user:password@proxy:port/";
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -71,14 +77,22 @@
   #   pulse.enable = true;
   # };
 
+  services.avahi.enable = true;
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
+
+      # for steam:
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
     ];
   };
 
   programs.dconf.enable = true;
+  programs.steam.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -109,6 +123,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    acpi
     self'.packages.my-nix
     psmisc
     xorg.xbacklight
@@ -118,9 +133,7 @@
 
   services.logind = {
     lidSwitch = "ignore";
-    extraConfig = ''
-      HandlePowerKey=suspend
-    '';
+    powerKey = "suspend";
   };
 
   services.openssh.enable = true;

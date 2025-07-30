@@ -12,7 +12,7 @@ let
   evalConfig =
     { hostname }:
     inputs.nixpkgs.lib.nixosSystem {
-      system = null;
+      #system = null;
       modules = [
         inputs.disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
         (hostsDir + "/${hostname}/configuration.nix")
