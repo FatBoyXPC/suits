@@ -140,9 +140,7 @@
 
   services.logind = {
     lidSwitch = "ignore";
-    extraConfig = ''
-      HandlePowerKey=suspend
-    '';
+    powerKey = "suspend";
   };
 
   services.openssh.enable = true;
