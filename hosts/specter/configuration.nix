@@ -30,9 +30,18 @@
     }
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "libsoup-2.74.3"
-  ];
+  nixpkgs.config = {
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-unwrapped"
+      ];
+
+    permittedInsecurePackages = [
+      "libsoup-2.74.3"
+    ];
+  };
 
   boot.loader.systemd-boot.enable = true;
 
@@ -79,10 +88,16 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
+
+      # for steam:
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
     ];
   };
 
   programs.dconf.enable = true;
+  programs.steam.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;

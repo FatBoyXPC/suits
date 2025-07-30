@@ -90,7 +90,6 @@ symlinkJoin {
     shtuff
     silver-searcher
     slackAlt
-    steam
     tldr
     tmux
     uhk-agent
