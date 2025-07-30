@@ -45,14 +45,6 @@ let
   };
   dmenuAlt = self'.packages.dmenu;
   flameshotAlt = self'.packages.flameshot;
-  mycliAlt = pkgs.mycli.overridePythonAttrs {
-    patches = [
-      (pkgs.fetchpatch {
-        url = "https://patch-diff.githubusercontent.com/raw/dbcli/mycli/pull/1198.patch";
-        hash = "sha256-NntPUeNgKjRCHXhBfYqyXhFSysk317a/pdDwvUyFx44=";
-      })
-    ];
-  };
   neovimAlt = self'.packages.neovim;
   passAlt = (pkgs.pass.override { dmenu = dmenuAlt; });
   slackAlt = symlinkJoin {
@@ -90,7 +82,7 @@ symlinkJoin {
     jq
     kitty # only because alacritty was slow <<<
     libreoffice-fresh
-    mycliAlt
+    mycli
     neovimAlt
     networkmanagerapplet
     passAlt
