@@ -16,6 +16,7 @@
     ./desktop.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../nixos-modules/nix-index.nix
     ../../nixos-modules/single-ext4.nix
     ./polybar
     ./shell.nix
