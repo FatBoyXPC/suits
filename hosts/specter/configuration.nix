@@ -35,6 +35,7 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
+        "reaper"
         "steam"
         "steam-unwrapped"
       ];
@@ -80,10 +81,15 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+   services.pipewire = {
+     enable = true;
+     alsa.enable = true;
+     alsa.support32Bit = true;
+     pulse.enable = true;
+     jack.enable = true;
+   };
+
+  security.rtkit.enable = true;
 
   services.avahi.enable = true;
 
@@ -134,6 +140,7 @@
     darktable
     self'.packages.my-nix
     psmisc
+    reaper
     xorg.xbacklight
   ];
 
