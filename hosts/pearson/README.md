@@ -29,3 +29,15 @@ Try out netboot!
 ```shell
 sudo nix run .#pearson-netboot
 ```
+
+After booting via netboot or the liveusb, `ssh root@pearson`
+
+## Netboot Notes
+
+If running this on a nix host, you probably need to open a firewall as well.
+
+You can run `ss -tulpn | grep pixi` to see which ports are needed by pixiecore.
+
+Use `nixos-firewall-tool` to open up ports.
+
+Note: for PXE boot to interact with pixiecore, you might need to disable secure boot and possibly disable CSM as well (on the machine you are attemptiong to takeover).

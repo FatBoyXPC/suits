@@ -87,6 +87,7 @@ symlinkJoin {
     networkmanagerapplet
     passAlt
     polybarFull
+    ripgrep
     shtuff
     silver-searcher
     slackAlt

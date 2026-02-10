@@ -51,7 +51,7 @@ symlinkJoin {
     chromiumAlt
     darktable
     diff-so-fancy
-    direnv
+    #direnv
     dmenu
     docker
     docker-compose
