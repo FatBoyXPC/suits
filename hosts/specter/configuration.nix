@@ -216,6 +216,7 @@
   #   enableSSHSupport = true;
   # };
   programs.gnupg.agent.enable = true;
+  programs.nix-ld.enable = true;
   programs.ssh = {
     startAgent = true;
   };

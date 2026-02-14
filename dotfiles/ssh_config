@@ -90,8 +90,8 @@ Host fbproxy
     DynamicForward 9090
     user james
 
-Host htpc
-    HostName 192.168.2.90
+Host paulson
+    HostName paulson
     user james
 
 Host wcap
