@@ -15,6 +15,7 @@ let
       #system = null;
       modules = [
         inputs.disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
+        inputs.vpn-confinement.nixosModules.default
         (hostsDir + "/${hostname}/configuration.nix")
         (
           { pkgs, ... }:
