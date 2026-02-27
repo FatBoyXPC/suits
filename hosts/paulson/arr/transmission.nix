@@ -16,6 +16,8 @@ in
         rpc-bind-address = "0.0.0.0";
         rpc-whitelist-enabled = "false";
         rpc-host-whitelist-enabled = "false";
+        # Allow group to write to these files (the default is 022).
+        umask = 2;
       };
     };
 
