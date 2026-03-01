@@ -33,6 +33,12 @@
       recommendedProxySettings = true;
     };
 
+    newt = {
+      enable = true;
+      environmentFile = "/etc/secrets/newt";
+      settings.endpoint = "https://pangolin.fatboyxpc.com";
+    };
+
     openssh.enable = true;
   };
 
