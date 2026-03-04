@@ -23,11 +23,39 @@
     hostName = "paulson";
 
     firewall.allowedTCPPorts = [
+      53
       80
+    ];
+
+    firewall.allowedUDPPorts = [
+      53
     ];
   };
 
   services = {
+    dnsmasq = {
+      enable = true;
+      settings = {
+        interface = [ "lo" "enp4s0" ];
+        bind-interfaces = true;
+        no-resolv = true;
+
+        server = [
+          "1.1.1.1"
+          "8.8.8.8"
+
+          "/www.fatboyxpc.com/1.1.1.1"
+          "/www.fatboyxpc.com/8.8.8.8"
+          "/pangolin.fatboyxpc.com/1.1.1.1"
+          "/pangolin.fatboyxpc.com/8.8.8.8"
+        ];
+
+        address = [
+          "/fatboyxpc.com/192.168.2.48"
+        ];
+      };
+    };
+
     nginx = {
       enable = true;
       recommendedProxySettings = true;
