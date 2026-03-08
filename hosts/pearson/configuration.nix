@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 
@@ -12,7 +13,7 @@
 
   # This is little more personal than "nixos".
   # The user is defined in the shared nixos module.
-  services.getty.autologinUser = lib.mkForce "pearson";
+  services.getty.autologinUser = lib.mkForce "root";
 
   # Enable ssh.
   services.openssh.enable = true;
@@ -28,13 +29,16 @@
   # Some minimal config necessary to define a buildable machine.
   fileSystems."/".device = "/dev/null";
   boot.loader.systemd-boot.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # WiFi
-  networking.wireless = {
-    allowAuxiliaryImperativeNetworks = true;
-    networks = {
-      # Format:
-      # "SSID".psk = "password";
-    };
+  networking.networkmanager.ensureProfiles.profiles.home = {
+    connection.id = "To do later";
+    connection.type = "wifi";
+    connection.autoconnect = true;
+    wifi.mode = "infrastructure";
+    wifi.ssid = "The_Oxford_Hotel";
+    #wifi-security.psk = "password";
+    #wifi-security.key-mgmt = "wpa-psk";
   };
 }
