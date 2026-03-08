@@ -34,6 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
+
     with-alacritty = {
       url = "github:FatBoyXPC/with-alacritty";
       inputs.nixpkgs.follows = "nixpkgs";
