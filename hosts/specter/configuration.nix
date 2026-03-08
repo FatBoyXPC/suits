@@ -155,6 +155,8 @@
   services.openssh.enable = true;
   services.udisks2.enable = true;
 
+  virtualisation.docker.enable = true;
+
   services.interception-tools =
     let
       mux = "${pkgs.interception-tools}/bin/mux";
