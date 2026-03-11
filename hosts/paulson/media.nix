@@ -17,6 +17,12 @@
       };
     };
   };
+
+  systemd.services.jellyfin = {
+    unitConfig = {
+      RequiresMountsFor = "/mnt/cosmos/media";
+    };
+  };
 }
 
 # vpn <<< wireguard.conf

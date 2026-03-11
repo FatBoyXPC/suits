@@ -11,8 +11,10 @@
     ./hardware-configuration.nix
     ./media.nix
     ../../nixos-modules/james-user.nix
+    ./nas.nix
     ../../nixos-modules/nix-index.nix
     ../../nixos-modules/single-ext4.nix
+    ../../nixos-modules/zfs
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -20,6 +22,7 @@
   disko.devices.disk.main.device = "/dev/disk/by-id/ata-ADATA_SU655_2L302LA1K6JC";
 
   networking = {
+    hostId = "93a23331";
     hostName = "paulson";
 
     firewall.allowedTCPPorts = [

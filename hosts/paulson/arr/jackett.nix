@@ -22,6 +22,9 @@ in
       enable = true;
       vpnNamespace = "wg";
     };
+    unitConfig = {
+      RequiresMountsFor = "/mnt/cosmos/media";
+    };
   };
 
   vpnNamespaces.wg.portMappings = [
