@@ -18,6 +18,9 @@
     };
   };
 
+  # Let's make it so that seerr can see jellyfin (for authentication)
+  networking.extraHosts = "192.168.2.48 jf.fatboyxpc.com";
+
   systemd.services.jellyfin = {
     unitConfig = {
       RequiresMountsFor = "/mnt/cosmos/media";
