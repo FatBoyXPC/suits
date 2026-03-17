@@ -44,7 +44,7 @@ inputs.nixvim.legacyPackages.${system}.makeNixvim {
     )
     // {
       web-devicons.enable = false;
-      lsp.servers  = {
+      lsp.servers = {
         phpactor.enable = true;
       };
     };
