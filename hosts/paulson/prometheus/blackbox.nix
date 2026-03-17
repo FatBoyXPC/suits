@@ -31,11 +31,6 @@
         static_configs = [
           {
             targets = [
-              "http://localhost:8000"
-            ];
-          }
-          {
-            targets = [
               "https://healthcheck.snow.jflei.com"
             ];
             labels.for = "jfly";
