@@ -8,6 +8,7 @@
 {
   imports = [
     ./gpu.nix
+    ./grafana.nix
     ./hardware-configuration.nix
     ./media.nix
     ../../nixos-modules/james-user.nix
@@ -15,6 +16,7 @@
     ../../nixos-modules/nix-index.nix
     ../../nixos-modules/single-ext4.nix
     ../../nixos-modules/zfs
+    ./prometheus
   ];
 
   boot.loader.systemd-boot.enable = true;
