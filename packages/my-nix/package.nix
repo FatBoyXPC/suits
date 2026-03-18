@@ -72,8 +72,6 @@ symlinkJoin {
     diff-so-fancy
     diffHighlightAlt
     dmenuAlt
-    docker
-    docker-compose
     flameshotAlt
     fzf
     git
@@ -87,6 +85,7 @@ symlinkJoin {
     networkmanagerapplet
     passAlt
     polybarFull
+    ripgrep
     shtuff
     silver-searcher
     slackAlt
