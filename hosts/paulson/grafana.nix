@@ -27,6 +27,7 @@
           }
         ];
       };
+      settings.server.root_url = "http://grafana.fatboyxpc.com";
 
     };
 
