@@ -80,8 +80,7 @@ Host erin-vps
 
 
 Host fatboyxpc
-    #HostName fatboyxpc.com
-    HostName 192.168.2.109
+    HostName fatboyxpc.com
     user james
 
 Host fbproxy
@@ -92,6 +91,10 @@ Host fbproxy
 
 Host paulson
     HostName 192.168.2.48
+    user james
+
+Host specter
+    HostName 192.168.2.109
     user james
 
 Host wcap
