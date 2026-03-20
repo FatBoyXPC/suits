@@ -94,12 +94,6 @@
 
   services.avahi.enable = true;
 
-  services.newt = {
-    enable = true;
-    environmentFile = "/etc/secrets/newt";
-    settings.endpoint = "https://pangolin.fatboyxpc.com";
-  };
-
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
