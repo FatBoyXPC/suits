@@ -27,7 +27,10 @@
           }
         ];
       };
-      settings.server.root_url = "http://grafana.fatboyxpc.com";
+      settings = {
+        security.secret_key = "$_file{/etc/secrets/grafana_secret_key}";
+        server.root_url = "http://grafana.fatboyxpc.com";
+      };
 
     };
 
