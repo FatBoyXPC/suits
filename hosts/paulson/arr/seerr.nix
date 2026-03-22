@@ -4,14 +4,14 @@ let
   port = config.services.jellyseerr.port;
 in
 {
-  services = {
-    jellyseerr.enable = true;
+  services.jellyseerr.enable = true;
 
-    nginx.virtualHosts."seerr.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://${host}:${toString port}";
-      };
+  fat.proxy.seerr = {
+    target = {
+      inherit host port;
     };
+
+    protected.lan = false;
   };
 
   systemd.services.jellyseerr = {

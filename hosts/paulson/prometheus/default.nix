@@ -29,11 +29,11 @@
         }
       ];
     };
+  };
 
-    nginx.virtualHosts."prometheus.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://localhost:${toString config.services.prometheus.port}";
-      };
-    };
+  fat.proxy.prometheus = {
+    target.port = config.services.prometheus.port;
+
+    protected.lan = false;
   };
 }

@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./fat-proxy.nix
     ./gpu.nix
     ./grafana.nix
     ./hardware-configuration.nix

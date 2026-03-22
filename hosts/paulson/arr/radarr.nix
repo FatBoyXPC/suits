@@ -9,12 +9,14 @@ in
       enable = true;
       group = "media";
     };
+  };
 
-    nginx.virtualHosts."radarr.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://${host}:${toString port}";
-      };
+  fat.proxy.radarr = {
+    target = {
+      inherit host port;
     };
+
+    protected.lan = false;
   };
 
   systemd.services.radarr = {

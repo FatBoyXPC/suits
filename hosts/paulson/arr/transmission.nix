@@ -20,12 +20,14 @@ in
         umask = 2;
       };
     };
+  };
 
-    nginx.virtualHosts."transmission.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://${host}:${toString port}";
-      };
+  fat.proxy.transmission = {
+    target = {
+      inherit host port;
     };
+
+    protected.lan = false;
   };
 
   systemd.services.transmission = {

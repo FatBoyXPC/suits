@@ -9,12 +9,14 @@ in
       enable = true;
       group = "media";
     };
+  };
 
-    nginx.virtualHosts."sonarr.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://${host}:${toString port}";
-      };
+  fat.proxy.sonarr = {
+    target = {
+      inherit host port;
     };
+
+    protected.lan = false;
   };
 
   systemd.services.sonarr = {

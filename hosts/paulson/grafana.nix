@@ -31,16 +31,16 @@
         security.secret_key = "$_file{/etc/secrets/grafana_secret_key}";
         server = {
           http_port = 3100;
-          root_url = "http://grafana.fatboyxpc.com";
+          root_url = "https://grafana.fatboyxpc.com";
         };
       };
 
     };
+  };
 
-    nginx.virtualHosts."grafana.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://localhost:${toString config.services.grafana.settings.server.http_port}";
-      };
-    };
+  fat.proxy.grafana = {
+    target.port = config.services.grafana.settings.server.http_port;
+
+    protected.lan = false;
   };
 }

@@ -47,11 +47,13 @@
         ];
       };
     };
-
-    nginx.virtualHosts."alertmanager.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://localhost:${toString config.services.prometheus.alertmanager.port}";
-      };
-    };
   };
+
+  fat.proxy.alertmanager = {
+    name = "Alert Manager";
+    target.port = config.services.prometheus.alertmanager.port;
+
+    protected.lan = false;
+  };
+
 }

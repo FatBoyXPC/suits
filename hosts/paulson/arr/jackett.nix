@@ -9,12 +9,14 @@ in
       enable = true;
       group = "media";
     };
+  };
 
-    nginx.virtualHosts."jackett.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://${host}:${toString port}";
-      };
+  fat.proxy.jackett = {
+    target = {
+      inherit host port;
     };
+
+    protected.lan = false;
   };
 
   systemd.services.jackett = {

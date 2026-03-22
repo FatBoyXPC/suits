@@ -9,13 +9,13 @@
       enable = true;
       group = "media";
     };
+  };
 
-    nginx.virtualHosts."jf.fatboyxpc.com" = {
-      locations."/" = {
-        # https://jellyfin.org/docs/general/post-install/networking/
-        proxyPass = "http://localhost:8096";
-      };
-    };
+  fat.proxy.jellyfin = {
+    subdomain = "jf";
+    target.port = 8096;
+
+    unprotected = true;
   };
 
   # Let's make it so that seerr can see jellyfin (for authentication)

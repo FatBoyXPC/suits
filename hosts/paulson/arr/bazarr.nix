@@ -9,12 +9,14 @@ in
       enable = true;
       group = "media";
     };
+  };
 
-    nginx.virtualHosts."bazarr.fatboyxpc.com" = {
-      locations."/" = {
-        proxyPass = "http://${host}:${toString port}";
-      };
+  fat.proxy.bazarr = {
+    target = {
+      inherit host port;
     };
+
+    protected.lan = false;
   };
 
   systemd.services.bazarr = {
