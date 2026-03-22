@@ -29,7 +29,10 @@
       };
       settings = {
         security.secret_key = "$_file{/etc/secrets/grafana_secret_key}";
-        server.root_url = "http://grafana.fatboyxpc.com";
+        server = {
+          http_port = 3100;
+          root_url = "http://grafana.fatboyxpc.com";
+        };
       };
 
     };

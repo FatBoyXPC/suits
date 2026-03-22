@@ -26,22 +26,21 @@
   networking = {
     hostId = "93a23331";
     hostName = "paulson";
-
-    firewall.allowedTCPPorts = [
-      80
-    ];
   };
 
   services = {
-    nginx = {
-      enable = true;
-      recommendedProxySettings = true;
-    };
-
     newt = {
       enable = true;
       environmentFile = "/etc/secrets/newt";
       settings.endpoint = "https://pangolin.fatboyxpc.com";
+    };
+
+    pangolin = {
+      enable = true;
+      baseDomain = "fatboyxpc.com";
+      environmentFile = "/etc/secrets/pangolin.env";
+      letsEncryptEmail = "fatboyxpc@gmail.com";
+      openFirewall = true;
     };
 
     openssh.enable = true;
