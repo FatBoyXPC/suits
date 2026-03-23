@@ -8,6 +8,8 @@ in
     sonarr = {
       enable = true;
       group = "media";
+
+      settings.auth.method = "External";
     };
   };
 

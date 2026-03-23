@@ -8,6 +8,8 @@ in
     radarr = {
       enable = true;
       group = "media";
+
+      settings.auth.method = "External";
     };
   };
 

@@ -33,6 +33,11 @@
           http_port = 3100;
           root_url = "https://grafana.fatboyxpc.com";
         };
+
+        "auth.anonymous" = {
+          enabled = true;
+          org_role = "Viewer";
+        };
       };
 
     };
