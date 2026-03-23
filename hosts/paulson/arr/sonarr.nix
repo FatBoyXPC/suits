@@ -4,13 +4,11 @@ let
   port = config.services.sonarr.settings.server.port;
 in
 {
-  services = {
-    sonarr = {
-      enable = true;
-      group = "media";
+  services.sonarr = {
+    enable = true;
+    group = "media";
 
-      settings.auth.method = "External";
-    };
+    settings.auth.method = "External";
   };
 
   fat.proxy.sonarr = {

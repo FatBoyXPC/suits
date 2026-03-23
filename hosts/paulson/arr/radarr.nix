@@ -4,13 +4,11 @@ let
   port = config.services.radarr.settings.server.port;
 in
 {
-  services = {
-    radarr = {
-      enable = true;
-      group = "media";
+  services.radarr = {
+    enable = true;
+    group = "media";
 
-      settings.auth.method = "External";
-    };
+    settings.auth.method = "External";
   };
 
   fat.proxy.radarr = {

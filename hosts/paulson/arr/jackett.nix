@@ -4,11 +4,9 @@ let
   port = config.services.jackett.port;
 in
 {
-  services = {
-    jackett = {
-      enable = true;
-      group = "media";
-    };
+  services.jackett = {
+    enable = true;
+    group = "media";
   };
 
   fat.proxy.jackett = {

@@ -4,11 +4,9 @@
     ./arr
   ];
 
-  services = {
-    jellyfin = {
-      enable = true;
-      group = "media";
-    };
+  services.jellyfin = {
+    enable = true;
+    group = "media";
   };
 
   fat.proxy.jellyfin = {

@@ -4,11 +4,9 @@ let
   port = config.services.bazarr.listenPort;
 in
 {
-  services = {
-    bazarr = {
-      enable = true;
-      group = "media";
-    };
+  services.bazarr = {
+    enable = true;
+    group = "media";
   };
 
   fat.proxy.bazarr = {

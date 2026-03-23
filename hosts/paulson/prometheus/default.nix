@@ -11,24 +11,22 @@
     ./scrapers.nix
   ];
 
-  services = {
-    prometheus = {
-      enable = true;
-      retentionTime = "100y";
+  services.prometheus = {
+    enable = true;
+    retentionTime = "100y";
 
-      exporters.node.enable = true;
+    exporters.node.enable = true;
 
-      alertmanagers = [
-        {
-          scheme = "http";
-          static_configs = [
-            {
-              targets = [ "localhost:${toString config.services.prometheus.alertmanager.port}" ];
-            }
-          ];
-        }
-      ];
-    };
+    alertmanagers = [
+      {
+        scheme = "http";
+        static_configs = [
+          {
+            targets = [ "localhost:${toString config.services.prometheus.alertmanager.port}" ];
+          }
+        ];
+      }
+    ];
   };
 
   fat.proxy.prometheus = {
