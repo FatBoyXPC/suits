@@ -47,6 +47,15 @@
     openssh.enable = true;
   };
 
+  fat.proxy.litt = {
+    target = {
+      host = "192.168.2.1";
+      port = 80;
+    };
+
+    protected.lan = false;
+  };
+
   users = {
     groups.media.gid = 1000;
     users.james.extraGroups = [ "media" ];
