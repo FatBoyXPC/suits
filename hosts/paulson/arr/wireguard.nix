@@ -7,7 +7,7 @@
 {
   imports = [ inputs.vpn-confinement.nixosModules.default ];
 
-  vpnNamespaces.wg = {
+  vpnNamespaces.mvd = {
     enable = true;
     wireguardConfigFile = "/etc/secrets/wireguard.conf";
     namespaceAddress = "172.20.0.1";
@@ -20,7 +20,7 @@
     ];
   };
 
-  systemd.services.wg.serviceConfig = {
+  systemd.services.mvd.serviceConfig = {
     Restart = "on-failure";
     # Don't allow dependent services to see failures, otherwise those services
     # will get stuck due to a dependency failing. This hides that failure.
@@ -41,6 +41,6 @@
   networking.nat = {
     enable = true;
     enableIPv6 = true;
-    internalInterfaces = [ "wg-br" ];
+    internalInterfaces = [ "mvd-br" ];
   };
 }

@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  host = config.vpnNamespaces.wg.namespaceAddress;
+  host = config.vpnNamespaces.mvd.namespaceAddress;
   port = config.services.bazarr.listenPort;
 in
 {
@@ -20,14 +20,14 @@ in
   systemd.services.bazarr = {
     vpnConfinement = {
       enable = true;
-      vpnNamespace = "wg";
+      vpnNamespace = "mvd";
     };
     unitConfig = {
       RequiresMountsFor = "/mnt/cosmos/media";
     };
   };
 
-  vpnNamespaces.wg.portMappings = [
+  vpnNamespaces.mvd.portMappings = [
     {
       from = port;
       to = port;

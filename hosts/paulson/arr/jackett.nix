@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  host = config.vpnNamespaces.wg.namespaceAddress;
+  host = config.vpnNamespaces.mvd.namespaceAddress;
   port = config.services.jackett.port;
 in
 {
@@ -20,14 +20,14 @@ in
   systemd.services.jackett = {
     vpnConfinement = {
       enable = true;
-      vpnNamespace = "wg";
+      vpnNamespace = "mvd";
     };
     unitConfig = {
       RequiresMountsFor = "/mnt/cosmos/media";
     };
   };
 
-  vpnNamespaces.wg.portMappings = [
+  vpnNamespaces.mvd.portMappings = [
     {
       from = port;
       to = port;

@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  host = config.vpnNamespaces.wg.namespaceAddress;
+  host = config.vpnNamespaces.mvd.namespaceAddress;
   port = config.services.transmission.settings.rpc-port;
   mediaDir = "/mnt/cosmos/media";
 in
@@ -31,14 +31,14 @@ in
   systemd.services.transmission = {
     vpnConfinement = {
       enable = true;
-      vpnNamespace = "wg";
+      vpnNamespace = "mvd";
     };
     unitConfig = {
       RequiresMountsFor = "/mnt/cosmos/media";
     };
   };
 
-  vpnNamespaces.wg.portMappings = [
+  vpnNamespaces.mvd.portMappings = [
     {
       from = port;
       to = port;
