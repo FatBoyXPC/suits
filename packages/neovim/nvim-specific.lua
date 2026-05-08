@@ -42,7 +42,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require'lspconfig'.phpactor.setup{
+vim.lsp.config('phpactor', {
     on_attach = on_attach,
     capabilities = capabilities,
     init_options = {
@@ -55,7 +55,7 @@ require'lspconfig'.phpactor.setup{
         ["logging.level"] = "debug",
         ["logging.formatter"] = "pretty"
     }
-}
+})
 
 local telescope = require('telescope')
 local actions = require('telescope.actions')

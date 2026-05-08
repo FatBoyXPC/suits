@@ -34,6 +34,7 @@ inputs.nixvim.legacyPackages.${system}.makeNixvim {
         "indent-blankline"
         "lightline"
         "lsp"
+        "lspconfig"
         "markdown-preview"
         "nvim-autopairs"
         "sandwich"
