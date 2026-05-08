@@ -39,6 +39,7 @@
         "reaper"
         "steam"
         "steam-unwrapped"
+        "vim-sandwich"
       ];
 
     permittedInsecurePackages = [

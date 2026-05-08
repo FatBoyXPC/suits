@@ -13,6 +13,7 @@
             "steam"
             "steam-unwrapped"
             "uhk-agent"
+            "vim-sandwich"
           ];
       };
     };
