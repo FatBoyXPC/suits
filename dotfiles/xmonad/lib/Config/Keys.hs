@@ -69,7 +69,7 @@ myKeys =
 
         ((myModMask, xK_i), spawn "clipboard-imgur"),
         ((myModMask .|. shiftMask, xK_i), spawn "copy-latest-upload"),
-        ((controlMask .|. altMask, xK_2), spawn "flameshot gui"),
+        ((controlMask .|. altMask, xK_2), spawn "screenshot"),
         ((controlMask .|. altMask, xK_4), spawn "jscrot --video"),
 
         ((0, xF86XK_Display), spawn $ "toggle-display"),

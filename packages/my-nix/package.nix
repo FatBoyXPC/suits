@@ -44,7 +44,6 @@ let
     '';
   };
   dmenuAlt = self'.packages.dmenu;
-  flameshotAlt = self'.packages.flameshot;
   neovimAlt = self'.packages.neovim;
   passAlt = (pkgs.pass.override { dmenu = dmenuAlt; });
   slackAlt = symlinkJoin {
@@ -72,7 +71,6 @@ symlinkJoin {
     diff-so-fancy
     diffHighlightAlt
     dmenuAlt
-    flameshotAlt
     fzf
     git
     gnugrep
@@ -97,6 +95,7 @@ symlinkJoin {
     whois
     withAlacrittyAlt
     xcwd
+    (callPackage ./bin/screenshot.nix { inherit pkgs; })
   ];
   passthru.wrapped = self'.packages.my-nix.override { wrapsWithNixGl = true; };
 }

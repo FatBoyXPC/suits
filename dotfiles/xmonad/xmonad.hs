@@ -5,6 +5,7 @@ import XMonad.Config.Desktop
 import XMonad.Layout.LayoutCombinators
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Hooks.EwmhDesktops
@@ -46,6 +47,8 @@ windowPlacement = composeAll [
             className =? "Slack" --> doShift chatWs,
 
             className =? "kittypicker" --> doFloat,
+
+            className =? "satty" --> doFullFloat,
 
             -- Emoji picker!
             role =? "picker" --> doFloat
