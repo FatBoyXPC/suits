@@ -1,3 +1,0 @@
-#!/bin/env bash
-
-~/bin/git-commit-link.py "$1" | clipit

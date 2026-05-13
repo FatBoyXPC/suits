@@ -7,7 +7,7 @@ from subprocess import check_output
 import sys
 
 commit = sys.argv[1]
-remoteOrigin = check_output('git config --get remote.origin.url', shell=True).rstrip()
+remoteOrigin = check_output('git config --get remote.origin.url', shell=True, universal_newlines=True).rstrip()
 url = remoteOrigin.replace(':', '/').replace('git@', 'https://').replace('.git', '/')
 url = url + 'commit/' + commit
-print url
+print(url)

@@ -1,0 +1,23 @@
+{ pkgs }:
+
+pkgs.writeShellApplication {
+  name = "middle-paste";
+
+  runtimeInputs = with pkgs; [
+    xdotool
+    xsel
+  ];
+
+  text = ''
+    #This file allows us to simulate "middle click paste" behavior but we get to
+    #ignore where the actual cursor is.
+
+    # xsel | xvkbd -xsendevent -file - 2>/dev/null
+
+    # Alternate method
+    CLIP=$(xsel -o -b)
+    xsel -o | xsel -i -b
+    xdotool sleep 0.1 key --clearmodifiers ctrl+shift+v
+    echo -n "$CLIP" | xsel -i -b
+  '';
+}

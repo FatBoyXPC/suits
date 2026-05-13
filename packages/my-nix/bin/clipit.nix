@@ -1,0 +1,17 @@
+{ pkgs }:
+
+pkgs.writeShellApplication {
+  name = "clipit";
+
+  runtimeInputs = with pkgs; [
+    xsel
+  ];
+
+  text = ''
+    if [ $# -gt 0 ]; then
+        echo -n "$1" | exec xsel -ib
+    else
+        exec xsel -ib
+    fi
+  '';
+}

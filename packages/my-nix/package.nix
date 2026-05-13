@@ -95,6 +95,9 @@ symlinkJoin {
     whois
     withAlacrittyAlt
     xcwd
+    (callPackage ./bin/cgl.nix { inherit pkgs; })
+    (callPackage ./bin/clipit.nix { inherit pkgs; })
+    (callPackage ./bin/middle-paste.nix { inherit pkgs; })
     (callPackage ./bin/screenshot.nix { inherit pkgs; })
   ];
   passthru.wrapped = self'.packages.my-nix.override { wrapsWithNixGl = true; };
