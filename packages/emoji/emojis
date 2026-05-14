@@ -1,20 +1,3 @@
-#!/usr/bin/env bash
-
-function main() {
-    kitty --class kittypicker bash -c "echo -n \"$EMOJIS\" | fzf -m > ~/tmp/emoji"
-    sleep 0.1
-
-    SELECTED_EMOJI=$(sed "s/.*  \\([^ ].*\\)/\\1/" ~/tmp/emoji | tr -d '\n')
-
-    if [ -z "$SELECTED_EMOJI" ]; then
-        return 0
-    fi
-
-    echo -n "$SELECTED_EMOJI" | clipit
-    xdotool key --clearmodifiers ctrl+shift+v
-}
-
-EMOJIS=$(echo '
 disapproval                                     ಠ_ಠ
 flippin nuts nutflip                            (╯°□°)╯︵🍆🥜
 tickle nuts                                     🍆🥜ԅ(≖‿≖ԅ
@@ -22,7 +5,7 @@ flippin turds                                   (╯°□°)╯︵💩💩
 fliptable                                       (╯°□°)╯︵ ┻━┻
 flipbigtable                                    (╯°□°)╯︵ ┻━━━┻
 fliptableharder                                 (ノಠ益ಠ)ノ彡 ┻━┻
-tableflipsyou                                   ノ┬─┬ノ ︵ ( \\o°o )\\
+tableflipsyou                                   ノ┬─┬ノ ︵ ( \o°o )\
 puttableback                                    ┬──┬◡ﾉ(° -°ﾉ)
 puttablesback                                   ┬──┬︵/(ツ)\︵┬──┬
 shrug text                                      ¯\_(ツ)_/¯
@@ -307,7 +290,7 @@ family: man girl                                👨‍👧
 family: man girl boy                            👨‍👧‍👦
 family: man boy boy                             👨‍👦‍👦
 family: man girl girl                           👨‍👧‍👧
-woman’s clothes                                 👚
+woman's clothes                                 👚
 t-shirt                                         👕
 jeans                                           👖
 necktie                                         👔
@@ -315,15 +298,15 @@ dress                                           👗
 bikini                                          👙
 kimono                                          👘
 high-heeled shoe                                👠
-woman’s sandal                                  👡
-woman’s boot                                    👢
-man’s shoe                                      👞
+woman's sandal                                  👡
+woman's boot                                    👢
+man's shoe                                      👞
 running shoe                                    👟
-woman’s hat                                     👒
+woman's hat                                     👒
 top hat                                         🎩
 graduation cap                                  🎓
 crown                                           👑
-rescue worker’s helmet                          ⛑
+rescue worker's helmet                          ⛑
 school backpack                                 🎒
 clutch bag                                      👝
 purse                                           👛
@@ -1070,8 +1053,8 @@ passport control                                🛂
 customs                                         🛃
 baggage claim                                   🛄
 left luggage                                    🛅
-men’s room                                      🚹
-women’s room                                    🚺
+men's room                                      🚹
+women's room                                    🚺
 baby symbol                                     🚼
 restroom                                        🚻
 litter in bin sign                              🚮
@@ -1197,18 +1180,18 @@ diamond suit                                    ♦️
 joker                                           🃏
 flower playing cards                            🎴
 mahjong red dragon                              🀄️
-one o’clock                                     🕐
-two o’clock                                     🕑
-three o’clock                                   🕒
-four o’clock                                    🕓
-five o’clock                                    🕔
-six o’clock                                     🕕
-seven o’clock                                   🕖
-eight o’clock                                   🕗
-nine o’clock                                    🕘
-ten o’clock                                     🕙
-eleven o’clock                                  🕚
-twelve o’clock                                  🕛
+one o'clock                                     🕐
+two o'clock                                     🕑
+three o'clock                                   🕒
+four o'clock                                    🕓
+five o'clock                                    🕔
+six o'clock                                     🕕
+seven o'clock                                   🕖
+eight o'clock                                   🕗
+nine o'clock                                    🕘
+ten o'clock                                     🕙
+eleven o'clock                                  🕚
+twelve o'clock                                  🕛
 one-thirty                                      🕜
 two-thirty                                      🕝
 three-thirty                                    🕞
@@ -1281,7 +1264,7 @@ Congo - Brazzaville                             🇨🇬
 Congo - Kinshasa                                🇨🇩
 Cook Islands                                    🇨🇰
 Costa Rica                                      🇨🇷
-Côte d’Ivoire                                   🇨🇮
+Côte d'Ivoire                                   🇨🇮
 Croatia                                         🇭🇷
 Cuba                                            🇨🇺
 Curaçao                                         🇨🇼
@@ -1474,6 +1457,3 @@ Western Sahara                                  🇪🇭
 Yemen                                           🇾🇪
 Zambia                                          🇿🇲
 Zimbabwe                                        🇿🇼
-' | grep -v ^$)
-
-main

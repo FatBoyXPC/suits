@@ -44,6 +44,7 @@ let
     '';
   };
   dmenuAlt = self'.packages.dmenu;
+  emojiAlt = self'.packages.emoji;
   neovimAlt = self'.packages.neovim;
   passAlt = (pkgs.pass.override { dmenu = dmenuAlt; });
   slackAlt = symlinkJoin {
@@ -71,12 +72,12 @@ symlinkJoin {
     diff-so-fancy
     diffHighlightAlt
     dmenuAlt
+    emojiAlt
     fzf
     git
     gnugrep
     imagemagick
     jq
-    kitty # only because alacritty was slow <<<
     libreoffice-fresh
     mycli
     neovimAlt
