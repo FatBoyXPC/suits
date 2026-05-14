@@ -96,6 +96,7 @@ symlinkJoin {
     withAlacrittyAlt
     xcwd
     (callPackage ./bin/cgl.nix { inherit pkgs; })
+    (callPackage ./bin/clcl.nix { inherit pkgs; })
     (callPackage ./bin/clipit.nix { inherit pkgs; })
     (callPackage ./bin/middle-paste.nix { inherit pkgs; })
     (callPackage ./bin/screenshot.nix { inherit pkgs; })
