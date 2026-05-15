@@ -6,6 +6,7 @@ pkgs.writeShellApplication {
   runtimeInputs = with pkgs; [
     xdotool
     xsel
+    xvkbd
   ];
 
   text = ''

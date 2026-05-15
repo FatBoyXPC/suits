@@ -1,9 +1,10 @@
 {
   pkgs,
+  self',
 }:
 
 let
-  clipit = pkgs.callPackage ../my-nix/bin/clipit.nix { inherit pkgs; };
+  clipit = self'.packages.clipit;
   emoji-picker = pkgs.writeShellApplication {
     name = "emoji-picker";
 

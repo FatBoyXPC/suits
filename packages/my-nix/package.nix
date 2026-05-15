@@ -11,6 +11,7 @@ let
   shtuff = inputs'.shtuff.packages.default;
   with-alacritty = inputs'.with-alacritty.packages.default;
   autoperipherals = self'.packages.autoperipherals;
+  cglAlt = self'.packages.cgl;
   chromiumAlt = symlinkJoin {
     name = "chromium";
     paths = [
@@ -34,6 +35,8 @@ let
         --set GOOGLE_DEFAULT_CLIENT_SECRET OTJgUOQcT7lO7GsGZq2G4IlT
     '';
   };
+  clclAlt = self'.packages.clcl;
+  clipitAlt = self'.packages.clipit;
   colorschemeAlt = self'.packages.colorscheme;
   diffHighlightAlt = pkgs.symlinkJoin {
     name = "diff-highlight";
@@ -45,6 +48,7 @@ let
   };
   dmenuAlt = self'.packages.dmenu;
   emojiAlt = self'.packages.emoji;
+  middlePasteAlt = self'.packages.middle-paste;
   neovimAlt = self'.packages.neovim;
   passAlt = (pkgs.pass.override { dmenu = dmenuAlt; });
   slackAlt = symlinkJoin {
@@ -56,6 +60,7 @@ let
         --set BROWSER chromium
     '';
   };
+  screenshotAlt = self'.packages.screenshot;
   maybe-wrap-nixgl =
     if wrapsWithNixGl then pkgs.callPackage ./wrap-nixgl.nix { inherit inputs; } else p: p;
   withAlacrittyAlt = maybe-wrap-nixgl with-alacritty;
@@ -67,7 +72,10 @@ symlinkJoin {
     autoperipherals
     bc
     calibre
+    cglAlt
     chromiumAlt
+    clclAlt
+    clipitAlt
     colorschemeAlt
     diff-so-fancy
     diffHighlightAlt
@@ -79,12 +87,14 @@ symlinkJoin {
     imagemagick
     jq
     libreoffice-fresh
+    middlePasteAlt
     mycli
     neovimAlt
     networkmanagerapplet
     passAlt
     polybarFull
     ripgrep
+    screenshotAlt
     shtuff
     silver-searcher
     slackAlt
@@ -96,11 +106,6 @@ symlinkJoin {
     whois
     withAlacrittyAlt
     xcwd
-    (callPackage ./bin/cgl.nix { inherit pkgs; })
-    (callPackage ./bin/clcl.nix { inherit pkgs; })
-    (callPackage ./bin/clipit.nix { inherit pkgs; })
-    (callPackage ./bin/middle-paste.nix { inherit pkgs; })
-    (callPackage ./bin/screenshot.nix { inherit pkgs; })
   ];
   passthru.wrapped = self'.packages.my-nix.override { wrapsWithNixGl = true; };
 }

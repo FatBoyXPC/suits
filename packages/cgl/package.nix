@@ -1,14 +1,11 @@
-{ pkgs }:
+{ pkgs, self' }:
 
-let
-  clipit = pkgs.callPackage ./clipit.nix { inherit pkgs; };
-in
 pkgs.writeShellApplication {
   name = "cgl";
 
   runtimeInputs = with pkgs; [
     python3
-    clipit
+    self'.packages.clipit
   ];
 
   text = ''
