@@ -1,9 +1,14 @@
-{ pkgs }:
+{
+  writeShellApplication,
+  xdotool,
+  xsel,
+  xvkbd,
+}:
 
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "middle-paste";
 
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     xdotool
     xsel
     xvkbd

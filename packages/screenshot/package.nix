@@ -1,9 +1,14 @@
-{ pkgs }:
+{
+  writeShellApplication,
+  shotgun,
+  satty,
+  xclip,
+}:
 
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "screenshot";
 
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     shotgun
     xclip
     satty

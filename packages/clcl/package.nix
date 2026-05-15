@@ -1,9 +1,13 @@
-{ pkgs, self' }:
+{
+  self',
+  writeShellApplication,
+  git,
+}:
 
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "clcl";
 
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     self'.packages.cgl
     git
   ];

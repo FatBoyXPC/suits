@@ -1,9 +1,13 @@
-{ pkgs, self' }:
+{
+  self',
+  writeShellApplication,
+  python3,
+}:
 
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "cgl";
 
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     python3
     self'.packages.clipit
   ];

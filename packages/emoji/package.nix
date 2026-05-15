@@ -1,14 +1,17 @@
 {
-  pkgs,
   self',
+  writeShellApplication,
+  fzf,
+  kitty,
+  xdotool,
 }:
 
 let
   clipit = self'.packages.clipit;
-  emoji-picker = pkgs.writeShellApplication {
+  emoji-picker = writeShellApplication {
     name = "emoji-picker";
 
-    runtimeInputs = with pkgs; [
+    runtimeInputs = [
       clipit
       fzf
     ];
@@ -24,10 +27,10 @@ let
     '';
   };
 in
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "emoji";
 
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     clipit
     fzf
     kitty

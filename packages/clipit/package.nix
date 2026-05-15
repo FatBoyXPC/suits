@@ -1,9 +1,12 @@
-{ pkgs }:
+{
+  writeShellApplication,
+  xsel,
+}:
 
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "clipit";
 
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     xsel
   ];
 
