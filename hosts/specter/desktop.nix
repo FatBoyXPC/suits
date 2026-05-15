@@ -46,7 +46,7 @@
   };
 
   environment.systemPackages = [
-    pkgs.dunst
+    self'.packages.dunst
   ];
 
   systemd.user.services = {
