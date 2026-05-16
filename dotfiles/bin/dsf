@@ -1,3 +1,0 @@
-#!/bin/env bash
-
-diff -u --color=always "$@" | diff-so-fancy | less "$LESS"

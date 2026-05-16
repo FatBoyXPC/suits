@@ -89,6 +89,7 @@ symlinkJoin {
       clipit
       colorscheme
       dmenu
+      dsf
       emoji
       middle-paste
       neovim
