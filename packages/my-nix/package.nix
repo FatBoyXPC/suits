@@ -10,8 +10,6 @@
 let
   shtuff = inputs'.shtuff.packages.default;
   with-alacritty = inputs'.with-alacritty.packages.default;
-  autoperipherals = self'.packages.autoperipherals;
-  cglAlt = self'.packages.cgl;
   chromiumAlt = symlinkJoin {
     name = "chromium";
     paths = [
@@ -35,9 +33,6 @@ let
         --set GOOGLE_DEFAULT_CLIENT_SECRET OTJgUOQcT7lO7GsGZq2G4IlT
     '';
   };
-  clclAlt = self'.packages.clcl;
-  clipitAlt = self'.packages.clipit;
-  colorschemeAlt = self'.packages.colorscheme;
   diffHighlightAlt = pkgs.symlinkJoin {
     name = "diff-highlight";
     paths = [ pkgs.git ];
@@ -46,11 +41,7 @@ let
       ln -s ${pkgs.git}/share/git/contrib/diff-highlight/diff-highlight $out/bin/diff-highlight
     '';
   };
-  dmenuAlt = self'.packages.dmenu;
-  emojiAlt = self'.packages.emoji;
-  middlePasteAlt = self'.packages.middle-paste;
-  neovimAlt = self'.packages.neovim;
-  passAlt = (pkgs.pass.override { dmenu = dmenuAlt; });
+  passAlt = (pkgs.pass.override { dmenu = self'.packages.dmenu; });
   slackAlt = symlinkJoin {
     name = "slack";
     paths = [ pkgs.slack ];
@@ -60,7 +51,6 @@ let
         --set BROWSER chromium
     '';
   };
-  screenshotAlt = self'.packages.screenshot;
   maybe-wrap-nixgl =
     if wrapsWithNixGl then pkgs.callPackage ./wrap-nixgl.nix { inherit inputs; } else p: p;
   withAlacrittyAlt = maybe-wrap-nixgl with-alacritty;
@@ -68,44 +58,49 @@ in
 
 symlinkJoin {
   name = "my-nix";
-  paths = with pkgs; [
-    autoperipherals
-    bc
-    calibre
-    cglAlt
-    chromiumAlt
-    clclAlt
-    clipitAlt
-    colorschemeAlt
-    diff-so-fancy
-    diffHighlightAlt
-    dmenuAlt
-    emojiAlt
-    fzf
-    git
-    gnugrep
-    imagemagick
-    jq
-    libreoffice-fresh
-    middlePasteAlt
-    mycli
-    neovimAlt
-    networkmanagerapplet
-    passAlt
-    polybarFull
-    ripgrep
-    screenshotAlt
-    shtuff
-    silver-searcher
-    slackAlt
-    tldr
-    tmux
-    uhk-agent
-    unzip
-    weechat
-    whois
-    withAlacrittyAlt
-    xcwd
-  ];
+  paths =
+    (with pkgs; [
+      bc
+      calibre
+      diff-so-fancy
+      fzf
+      git
+      gnugrep
+      imagemagick
+      jq
+      libreoffice-fresh
+      mycli
+      networkmanagerapplet
+      polybarFull
+      ripgrep
+      silver-searcher
+      tldr
+      tmux
+      uhk-agent
+      unzip
+      weechat
+      whois
+      xcwd
+    ])
+    ++ (with self'.packages; [
+      autoperipherals
+      cgl
+      clcl
+      clipit
+      colorscheme
+      dmenu
+      emoji
+      middle-paste
+      neovim
+      screenshot
+    ])
+    ++ [
+      chromiumAlt
+      diffHighlightAlt
+      passAlt
+      slackAlt
+      shtuff
+      withAlacrittyAlt
+    ];
   passthru.wrapped = self'.packages.my-nix.override { wrapsWithNixGl = true; };
 }
