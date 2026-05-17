@@ -19,6 +19,7 @@
     ./interception-tools.nix
     ../../nixos-modules/nix-index.nix
     ../../nixos-modules/single-ext4.nix
+    ../../nixos-modules/ssh-colorscheme.nix
     ./polybar
     ./shell.nix
     #./gpu.nix
