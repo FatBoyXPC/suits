@@ -10,9 +10,8 @@
           pkg:
           builtins.elem (lib.getName pkg) [
             "slack"
-            "steam"
-            "steam-unwrapped"
             "uhk-agent"
+            "vim-polyglot"
             "vim-sandwich"
           ];
       };
