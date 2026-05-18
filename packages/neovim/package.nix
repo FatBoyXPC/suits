@@ -6,6 +6,13 @@
   ...
 }:
 
+let
+  fat-snippets = pkgs.vimUtils.buildVimPlugin {
+    pname = "fat-snippets";
+    version = "0.0.0";
+    src = ./snippets;
+  };
+in
 inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
   inherit pkgs;
   module = {
@@ -59,6 +66,7 @@ inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
       telescope-fzf-native-nvim
       telescope-live-grep-args-nvim
       telescope-ui-select-nvim
+      fat-snippets
       ultisnips
       vim-dim
       vim-gista
