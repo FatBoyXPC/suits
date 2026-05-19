@@ -90,6 +90,7 @@ symlinkJoin {
       colorscheme
       dmenu
       dsf
+      dvo
       emoji
       middle-paste
       neovim
