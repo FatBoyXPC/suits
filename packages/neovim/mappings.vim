@@ -117,12 +117,6 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
     nmap <silent> <Leader>gi :lua vim.lsp.buf.implementation()<CR>
     nmap <silent> <Leader>gr :lua vim.lsp.buf.references()<CR>
     nmap <silent> <Leader>ac :lua vim.lsp.buf.code_action()<CR>
-
-    "inoremap <silent><expr> <C-I> coc#refresh()
-    "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    "inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
-    "This is the right now:
-    "inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 " }
 
 " Refactoring: {
