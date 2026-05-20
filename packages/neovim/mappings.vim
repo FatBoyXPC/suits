@@ -118,8 +118,6 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
     nmap <silent> <Leader>gr :lua vim.lsp.buf.references()<CR>
     nmap <silent> <Leader>ac :lua vim.lsp.buf.code_action()<CR>
 
-    nnoremap <silent> K :call ShowDocumentation()<CR>
-
     "inoremap <silent><expr> <C-I> coc#refresh()
     "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     "inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
