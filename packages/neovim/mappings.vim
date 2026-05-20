@@ -132,10 +132,3 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
                     \ :<C-u>PhpactorExtractMethod<CR>
     augroup END
 " }
-
-function! VimrcOnlyMappings()
-    nnoremap <buffer> <Leader>pa :call AddPluginFromClipboard()<CR>
-    nnoremap <buffer> <Leader>pc :let @+ = GetLinkForPlugin()<CR>
-    nnoremap <buffer> <Leader>po :call system("xdg-open " . GetLinkForPlugin())<CR>
-    nnoremap <buffer> <Leader>pr :call RemovePlugin()<CR>
-endfunction

@@ -1,7 +1,3 @@
-" runtime! functions.vim
-" runtime! plugins.vim
-" runtime! mappings.vim
-
 " General: {
     syntax on
     filetype plugin indent on
@@ -105,11 +101,6 @@
 
 " Files: {
     autocmd BufWritePre * call StripTrailingWhitespace()
-
-    augroup autosource_vimrc
-        autocmd!
-        autocmd BufReadPost plugins.vim call VimrcOnlyMappings()
-    augroup END
 " }
 
 if filereadable("project.vim")
