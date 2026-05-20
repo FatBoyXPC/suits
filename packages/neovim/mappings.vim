@@ -101,6 +101,9 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
 
 " Search: {
     nnoremap <silent><leader>t/ :set invhlsearch<CR>
+    nmap <Leader>/ :Telescope live_grep<CR>
+    vmap <Leader>/ :lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<CR>
+    nmap <Leader>* :lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<CR>
 " }
 
 " UI: {

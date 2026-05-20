@@ -57,6 +57,8 @@ vim.lsp.config('phpactor', {
     }
 })
 
+vim.diagnostic.config({ virtual_text = true })
+
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
