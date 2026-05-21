@@ -92,6 +92,7 @@ symlinkJoin {
       dsf
       dvo
       emoji
+      git-cp
       middle-paste
       neovim
       screenshot
