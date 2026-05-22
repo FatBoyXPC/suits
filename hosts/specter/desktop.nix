@@ -43,6 +43,7 @@
     };
     autoRepeatDelay = 300;
     autoRepeatInterval = 30;
+    xkb.options = "compose:rctrl";
   };
 
   environment.systemPackages = [
