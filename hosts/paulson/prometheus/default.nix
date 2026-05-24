@@ -15,7 +15,13 @@
     enable = true;
     retentionTime = "100y";
 
-    exporters.node.enable = true;
+    exporters = {
+      node.enable = true;
+      systemd = {
+        enable = true;
+        user = "root";
+      };
+    };
 
     alertmanagers = [
       {
