@@ -1,10 +1,10 @@
 { config, ... }:
 let
   host = config.vpnNamespaces.mvd.namespaceAddress;
-  port = config.services.jellyseerr.port;
+  port = config.services.seerr.port;
 in
 {
-  services.jellyseerr.enable = true;
+  services.seerr.enable = true;
 
   fat.proxy.seerr = {
     target = {
@@ -14,9 +14,9 @@ in
     protected.lan = false;
   };
 
-  systemd.services.jellyseerr = {
+  systemd.services.seerr = {
     # Set `HOME` as a workaround for <https://github.com/Maroka-chan/VPN-Confinement/issues/36>.
-    environment.HOME = config.services.jellyseerr.configDir;
+    environment.HOME = config.services.seerr.configDir;
     vpnConfinement = {
       enable = true;
       vpnNamespace = "mvd";

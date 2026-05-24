@@ -20,6 +20,16 @@
     ./prometheus
   ];
 
+  nixpkgs.config = {
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "nvidia-kernel-modules"
+        "nvidia-settings"
+        "nvidia-x11"
+      ];
+  };
+
   boot.loader.systemd-boot.enable = true;
 
   disko.devices.disk.main.device = "/dev/disk/by-id/ata-ADATA_SU655_2L302LA1K6JC";
