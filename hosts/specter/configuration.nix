@@ -146,14 +146,14 @@
     self'.packages.my-nix
     psmisc
     reaper
-    xorg.xbacklight
+    xbacklight
   ];
 
   services.getty.greetingLine = ''If found, please email fatboyxpc@gmail.com immediately! \l'';
 
-  services.logind = {
-    lidSwitch = "ignore";
-    powerKey = "suspend";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandlePowerKey = "suspend";
   };
 
   services.gvfs.enable = true;

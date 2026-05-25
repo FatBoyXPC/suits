@@ -13,7 +13,7 @@
 
 let
   addToPath = with pkgs; [
-    xorg.xrandr
+    xrandr
     killall
     libnotify
   ];

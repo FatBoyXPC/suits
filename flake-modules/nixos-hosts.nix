@@ -19,8 +19,8 @@ let
           { pkgs, ... }:
           {
             _module.args = {
-              inputs' = withSystem pkgs.system ({ inputs', ... }: inputs');
-              self' = withSystem pkgs.system ({ self', ... }: self');
+              inputs' = withSystem pkgs.stdenv.hostPlatform.system ({ inputs', ... }: inputs');
+              self' = withSystem pkgs.stdenv.hostPlatform.system ({ self', ... }: self');
             };
           }
         )
