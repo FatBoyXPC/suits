@@ -90,6 +90,30 @@ custom_actions.select_file_and_accept_method = function (prompt_bufnr)
   builtin.lsp_document_methods()
 end
 
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local action_state = require("telescope.actions.state")
+
+local function open_fuzzy_from_picker(prompt_bufnr)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+
+  local results = {}
+  for entry in picker.manager:iter() do
+    table.insert(results, entry.value)
+  end
+
+  actions.close(prompt_bufnr)
+
+  pickers.new({}, {
+    prompt_title = "Live Grep Refinement",
+    finder = finders.new_table({
+      results = results,
+    }),
+    sorter = conf.generic_sorter({}),
+  }):find()
+end
+
 telescope.setup {
     defaults = {
         prompt_prefix = '  ',
@@ -101,6 +125,10 @@ telescope.setup {
             i = {
                 ['<C-a>'] = actions.toggle_all,
                 ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+                ["<C-/>"] = open_fuzzy_from_picker,
+            },
+            n = {
+                ["<C-/>"] = open_fuzzy_from_picker,
             },
         },
         file_ignore_patterns = { 'node_modules', '.DS_Store', 'resources/dist', '.git/', 'storage/framework' },
