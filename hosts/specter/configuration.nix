@@ -51,10 +51,12 @@
 
   disko.devices.disk.main.device = "/dev/nvme0n1";
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 16 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   networking.hostName = "specter"; # Define your hostname.
 
