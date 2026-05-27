@@ -95,11 +95,6 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
     nmap <Leader>* :lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<CR>
 " }
 
-" UI: {
-    nnoremap 1<Backspace> :set background=dark<CR>
-    nnoremap 2<Backspace> :set background=light<CR>
-" }
-
 " LSP: {
     nmap <silent> gd :lua vim.lsp.buf.definition()<CR>
     nmap <silent> <Leader>gt :lua vim.lsp.buf.type_definition()<CR>
