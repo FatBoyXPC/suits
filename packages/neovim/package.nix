@@ -62,6 +62,7 @@ inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
     extraPlugins = with pkgs.vimPlugins; [
       lightline-bufferline
       nerdcommenter
+      phpactor
       plenary-nvim
       telescope-fzf-native-nvim
       telescope-live-grep-args-nvim
