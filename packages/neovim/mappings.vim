@@ -1,9 +1,6 @@
 let mapleader = ' '
 
 nnoremap <Leader>fr :w<CR>:call system("fat-rerunner " . shellescape(g:shtuff_receiver))<CR>
-nnoremap <Leader>tw :w<CR>:call system("fat-rerunner " . shellescape(g:shtuff_receiver))<CR>
-nnoremap <Leader>tw "ayy:call system("shtuff into " . shellescape(g:shtuff_receiver) . ' ' . shellescape(trim("<C-r>a")))<CR>
-vnoremap <Leader>tw "ayiw:call agriculture#trim_and_escape_register_a()<CR>:call system("shtuff into " . shellescape(g:shtuff_receiver) . ' ' . <C-r>a)<CR>
 
 nnoremap <Leader>c :update\|Bd<CR>
 nnoremap <Leader>w :update<CR>
