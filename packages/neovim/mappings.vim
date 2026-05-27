@@ -16,11 +16,6 @@ nnoremap <Leader>ms :w<CR>:MarkdownPreviewStop<CR>:bd<CR>
     nnoremap <Leader>pc :let @+ = fnamemodify(expand("%"), ":~:.")<CR> " copy file path
 
     nnoremap <Leader>sp :e ~/scratchpad<CR>
-
-    nnoremap <Leader>vf :e ~/.vim/functions.vim<CR>
-    nnoremap <Leader>vm :e ~/.vim/mappings.vim<CR>
-    nnoremap <Leader>vr :e ~/.vim/myrc.vim<CR>
-    nnoremap <Leader>vp :e ~/.vim/plugins.vim<CR>
 " }
 
 " Editing: {
