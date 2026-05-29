@@ -30,6 +30,7 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.james = ./home.nix;
+      home-manager.extraSpecialArgs = { inherit self'; };
     }
   ];
 
