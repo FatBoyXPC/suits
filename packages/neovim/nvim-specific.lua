@@ -132,6 +132,9 @@ telescope.setup {
             },
         },
         file_ignore_patterns = { 'node_modules', '.DS_Store', 'resources/dist', '.git/', 'storage/framework' },
+        cache_picker = {
+            num_pickers = -1,
+        },
     },
     pickers = {
         find_files = {
