@@ -100,7 +100,7 @@ local function open_fuzzy_from_picker(prompt_bufnr)
 
   local results = {}
   for entry in picker.manager:iter() do
-    table.insert(results, entry.value)
+    table.insert(results, entry)
   end
 
   actions.close(prompt_bufnr)
@@ -109,8 +109,12 @@ local function open_fuzzy_from_picker(prompt_bufnr)
     prompt_title = "Live Grep Refinement",
     finder = finders.new_table({
       results = results,
+      entry_maker = function(entry)
+        return entry
+      end,
     }),
     sorter = conf.generic_sorter({}),
+    previewer = conf.grep_previewer({}),
   }):find()
 end
 
