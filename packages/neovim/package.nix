@@ -28,6 +28,8 @@ inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
 
     extraConfigLuaPost = builtins.readFile ./nvim-specific.lua;
 
+    lsp.servers.phpactor.enable = true;
+
     plugins =
       builtins.listToAttrs (
         map (x: (lib.nameValuePair x { enable = true; })) [
@@ -43,7 +45,6 @@ inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
           "indent-blankline"
           "lightline"
           "lsp"
-          "lspconfig"
           "markdown-preview"
           "nvim-autopairs"
           "sandwich"
@@ -54,9 +55,6 @@ inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
       )
       // {
         web-devicons.enable = false;
-        lsp.servers = {
-          phpactor.enable = true;
-        };
       };
 
     extraPlugins = with pkgs.vimPlugins; [
