@@ -46,6 +46,13 @@ in
                 type = lib.types.port;
               };
             };
+            alertPriority = lib.mkOption {
+              type = lib.types.enum [
+                "urgent"
+                "error"
+              ];
+              default = "error";
+            };
           };
         }
       )

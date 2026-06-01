@@ -64,6 +64,7 @@
     };
 
     protected.lan = false;
+    alertPriority = "urgent";
   };
 
   users = {

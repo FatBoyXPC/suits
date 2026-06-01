@@ -27,6 +27,17 @@
             }
           ];
         };
+        inhibit_rules = [
+          {
+            source_matchers = [
+              ''alertname="PangolinEntrypointDown"''
+            ];
+            target_matchers = [
+              ''alertname=~"CriticalHostDown|NonCriticalHostDown"''
+              ''dependency="pangolin"''
+            ];
+          }
+        ];
         receivers = [
           {
             name = "ntfy";
