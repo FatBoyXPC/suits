@@ -52,7 +52,7 @@ let
     '';
   };
   maybe-wrap-nixgl =
-    if wrapsWithNixGl then pkgs.callPackage ./wrap-nixgl.nix { inherit inputs; } else p: p;
+    if wrapsWithNixGl then pkgs.callPackage ./wrap-nixgl.nix { inherit inputs'; } else p: p;
   withAlacrittyAlt = maybe-wrap-nixgl with-alacritty;
 in
 
