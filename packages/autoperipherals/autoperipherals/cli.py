@@ -60,7 +60,7 @@ def _detect() -> Detection:
         f"{d.edid.name} {d.edid.serial}": d for d in displays if d.edid is not None
     }
 
-    if primary_external := display_by_edid_name.get("BenQ XL2420T L3D08627SL0"):
+    if primary_external := display_by_edid_name.get("Odyssey G5 HNBY501226"):
         location_name = "homeoffice"
         dpi = 96
 
@@ -68,6 +68,7 @@ def _detect() -> Detection:
             display.is_active = False
         primary_external.is_active = True
         primary_external.is_primary = True
+        primary_external.coordinates = xrandr.Coordinates(x=0, y=0, height=1440, width=2560)
 
     elif external_display := display_by_name.get("HDMI-1"):
         location_name = "projector"
@@ -140,6 +141,17 @@ class NoEdidException(click.ClickException):
 
     def __init__(self, display: xrandr.Display):
         super().__init__(f"Display {display.name} does not seem to have an EDID?")
+
+@main.command()
+def displays():
+    x = xrandr.XRandr()
+
+    displays = x.connected_displays
+    display_by_name = {d.name: d for d in displays}
+    display_by_edid_name = {
+        f"{d.edid.name} {d.edid.serial}": d for d in displays if d.edid is not None
+    }
+    print (display_by_edid_name.get("Odyssey G5 HNBY501226"))
 
 
 @main.command()

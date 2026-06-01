@@ -48,11 +48,19 @@ class Display:
             return None
         return base64.b64encode(self.raw_edid).decode()
 
+    @property
+    def resolution_args(self) -> list[str]:
+        if not self.is_active:
+            return ["--off"]
+        elif self.coordinates is not None:
+            return ["--mode", f"{self.coordinates.width}x{self.coordinates.height}"]
+        else:
+            return ["--preferred"]
+
     edid: pyedid.Edid | None
     is_connected: bool
     is_active: bool
 
-    # Currently read-only. Ideally we'd be able to apply this as well.
     coordinates: Coordinates | None
 
     # This is kind of weird: we don't currently support reading these values,
@@ -138,11 +146,12 @@ class XRandr:
                 [
                     "--output",
                     display.name,
-                    "--preferred" if display.is_active else "--off",
+                    *display.resolution_args,
                     "--rotate",
                     display.rotation,
                 ]
             )
+
             if display.is_primary:
                 args.extend(["--primary"])
             if display.left_of is not None:

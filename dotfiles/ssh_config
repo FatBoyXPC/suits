@@ -1,26 +1,29 @@
 AddKeysToAgent yes
 ServerAliveInterval 120
-
-Host allyjump
+Host allyprodjump
     HostName 172.31.32.36
     LocalForward 4106 app-allyms-cluster.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
-    LocalForward 4107 ally-demo.clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
-    LocalForward 4108 ally-staging.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
     user ubuntu
 
-Host allytesting
-    Hostname 172.31.28.57
-    LocalForward 4206 ally-testing.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
+Host allystagingjump
+    Hostname 10.100.3.6
+    LocalForward 4108 ally-staging.cluster-clv3ofbjzjfp.us-east-1.rds.amazonaws.com:3306
     user ubuntu
     IdentityFile ~/.ssh/id_ed25519
 
-host jfly
+Host allytesting
+    Hostname 10.100.1.117
+    LocalForward 4206 allyms-testing-cluster.cluster-c6h2euieidff.us-east-1.rds.amazonaws.com:3306
+    user ubuntu
+    IdentityFile ~/.ssh/id_ed25519
+
+Host jfly
     HostName clark.jflei.com
     LocalForward 8887 10.5.0.1:80
     LocalForward 8888 10.5.1.1:80
     user clark
 
-host clark
+Host clark
     HostName clark
     user clark
 
