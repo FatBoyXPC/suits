@@ -1,77 +1,52 @@
 {
   pkgs,
-  inputs,
-  system,
-  lib,
+  inputs',
   ...
 }:
 
-let
-  fat-snippets = pkgs.vimUtils.buildVimPlugin {
-    pname = "fat-snippets";
-    version = "0.0.0";
-    src = ./snippets;
-  };
-in
-inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+inputs'.nixvim.legacyPackages.makeNixvimWithModule {
   inherit pkgs;
   module = {
     extraConfigVim = ''
-      let g:clipboard='osc52'
-      let g:configPath=$HOME.'/.vim'
+      scriptencoding utf-8
 
-      ${builtins.readFile ./functions.vim}
-      ${builtins.readFile ./mappings.vim}
-      ${builtins.readFile ./myrc.vim}
-      ${builtins.readFile ./plugins.vim}
+      highlight ColorColumn ctermfg=8 ctermbg=7
+      highlight NonText ctermfg=8
+      highlight TabLineFill cterm=NONE
+
+      if filereadable("project.vim")
+        source project.vim
+      endif
     '';
 
-    extraConfigLuaPost = builtins.readFile ./nvim-specific.lua;
+    imports = [
+      ./completion.nix
+      ./git.nix
+      ./interface.nix
+      ./lsp.nix
+      ./mappings.nix
+      ./markdown.nix
+      ./phpactor.nix
+      ./settings.nix
+      ./snippets
+      ./telescope.nix
+      ./testing.nix
+    ];
 
-    lsp.servers.phpactor.enable = true;
-
-    plugins =
-      builtins.listToAttrs (
-        map (x: (lib.nameValuePair x { enable = true; })) [
-          "bufdelete"
-          "cmp"
-          "cmp-buffer"
-          "cmp-cmdline"
-          "cmp-nvim-lsp"
-          "cmp-nvim-lsp-signature-help"
-          "cmp-path"
-          "fugitive"
-          "gitgutter"
-          "indent-blankline"
-          "lightline"
-          "lsp"
-          "markdown-preview"
-          "nvim-autopairs"
-          "sandwich"
-          "tagbar"
-          "telescope"
-          "undotree"
-        ]
-      )
-      // {
-        web-devicons.enable = false;
-      };
+    plugins = {
+      bufdelete.enable = true;
+      nvim-autopairs.enable = true;
+      sandwich.enable = true;
+      tagbar.enable = true;
+      undotree.enable = true;
+    };
 
     extraPlugins = with pkgs.vimPlugins; [
-      lightline-bufferline
       nerdcommenter
-      phpactor
-      plenary-nvim
-      telescope-fzf-native-nvim
-      telescope-live-grep-args-nvim
-      telescope-ui-select-nvim
-      fat-snippets
-      ultisnips
-      vim-dim
-      vim-gista
-      vim-polyglot
-      vim-rhubarb
-      vim-test
     ];
+
+    globals = {
+      NERDCreateDefaultMappings = 0;
+    };
   };
 }

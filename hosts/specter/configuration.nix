@@ -155,6 +155,7 @@
     psmisc
     reaper
     xbacklight
+    xsel
   ];
 
   services.getty.greetingLine = ''If found, please email fatboyxpc@gmail.com immediately! \l'';
