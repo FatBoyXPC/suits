@@ -23,6 +23,10 @@ builtin.laravel_picker = function ()
   })
 end
 
+builtin.undo = function(opts)
+  require('telescope').extensions.undo.undo(opts)
+end
+
 local custom_actions = {}
 custom_actions.select_file_and_accept_method = function (prompt_bufnr)
   require('telescope.actions').select_default(prompt_bufnr)
@@ -119,7 +123,3 @@ telescope.setup {
         }
     },
 }
-
-telescope.load_extension('fzf')
-telescope.load_extension('live_grep_args')
-telescope.load_extension('ui-select')

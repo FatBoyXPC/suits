@@ -1,62 +1,34 @@
-{ pkgs, ... }:
-
 {
   extraConfigLuaPost = builtins.readFile ./telescope.lua;
 
   plugins = {
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+      extensions = {
+        fzf-native.enable = true;
+        live-grep-args.enable = true;
+        ui-select.enable = true;
+        undo.enable = true;
+      };
+      keymaps = {
+        "<Leader>b" = "buffers sort_lastused=true";
+        "<Leader>P" = "pickers";
+        "<Leader>R" = "resume";
+        "<C-P>" = "git_files";
+        "<Leader>af" = "find_files";
+        "<Leader>lf" = "laravel_picker";
+        "<Leader>mf" = "git_status";
+        "<Leader>fu" = "lsp_document_methods";
+        "<Leader>/" = "live_grep";
+      };
+    };
     web-devicons.enable = false;
   };
 
-  extraPlugins = with pkgs.vimPlugins; [
-    telescope-fzf-native-nvim
-    telescope-live-grep-args-nvim
-    telescope-ui-select-nvim
-  ];
-
   keymaps = [
-    # Navigation
-    {
-      key = "<Leader>b";
-      action = ":Telescope buffers sort_lastused=true<CR>";
-    }
-    {
-      key = "<Leader>P";
-      action = ":Telescope pickers<CR>";
-    }
-    {
-      key = "<Leader>R";
-      action = ":Telescope resume<CR>";
-    }
     {
       key = "<Leader>T";
       action = ":Telescope<CR>";
-    }
-    {
-      key = "<C-P>";
-      action = ":Telescope git_files<CR>";
-    }
-    {
-      key = "<Leader>af";
-      action = ":Telescope find_files<CR>";
-    }
-    {
-      key = "<Leader>lf";
-      action = ":Telescope laravel_picker<CR>";
-    }
-    {
-      key = "<Leader>mf";
-      action = ":Telescope git_status<CR>";
-    }
-    {
-      key = "<Leader>fu";
-      action = ":Telescope lsp_document_methods<CR>";
-    }
-
-    # Search
-    {
-      key = "<Leader>/";
-      action = ":Telescope live_grep<CR>";
     }
     {
       key = "<Leader>/";
