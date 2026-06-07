@@ -45,15 +45,5 @@ cmp.setup {
         compare.length,
         compare.order,
       },
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'path', option = {
-                get_cwd = function ()
-                    return vim.fn.getcwd()
-                end
-        } },
-        { name = 'buffer' },
     }
 }
