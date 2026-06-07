@@ -3,26 +3,26 @@
   diagnostic.settings.virtual_text = true;
   lsp.servers.phpactor.enable = true;
 
-  keymaps = [
+  lsp.keymaps = [
     {
       key = "gd";
-      action = ":lua vim.lsp.buf.definition()<CR>";
+      lspBufAction = "definition";
     }
     {
       key = "<Leader>gt";
-      action = ":lua vim.lsp.buf.type_definition()<CR>";
+      lspBufAction = "type_definition";
     }
     {
       key = "<Leader>gi";
-      action = ":lua vim.lsp.buf.implementation()<CR>";
+      lspBufAction = "implementation";
     }
     {
       key = "<Leader>gr";
-      action = ":lua vim.lsp.buf.references()<CR>";
+      lspBufAction = "references";
     }
     {
       key = "<Leader>ac";
-      action = ":lua vim.lsp.buf.code_action()<CR>";
+      lspBufAction = "code_action";
     }
   ];
 }
