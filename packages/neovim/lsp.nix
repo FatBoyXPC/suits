@@ -1,7 +1,27 @@
 {
-  plugins.lsp.enable = true;
+  plugins = {
+    lsp.enable = true;
+    lsp-format = {
+      enable = true;
+      lspServersToEnable = "none";
+    };
+
+    none-ls = {
+      enable = true;
+      sources.formatting.nix_flake_fmt.enable = true;
+    };
+  };
+
   diagnostic.settings.virtual_text = true;
-  lsp.servers.phpactor.enable = true;
+
+  lsp = {
+    inlayHints.enable = true;
+
+    servers = {
+      phpactor.enable = true;
+      nixd.enable = true;
+    };
+  };
 
   lsp.keymaps = [
     {
