@@ -154,6 +154,7 @@
     self'.packages.my-nix
     psmisc
     reaper
+    signal-desktop
     xbacklight
     xsel
   ];
