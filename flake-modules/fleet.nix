@@ -7,14 +7,14 @@
 }:
 
 let
-  hostsDir = ../hosts;
+  nixosDir = ../fleet/nixos;
 
   evalConfig =
     { hostname }:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
         inputs.disko.nixosModules.disko # <<< TODO: hosts should be able to import things they need, such as disko
-        (hostsDir + "/${hostname}/configuration.nix")
+        (nixosDir + "/${hostname}/configuration.nix")
         (
           { pkgs, ... }:
           {
@@ -30,8 +30,8 @@ let
       };
     };
 
-  hostDirs = lib.filterAttrs (_hostname: type: type == "directory") (builtins.readDir hostsDir);
-  nixosConfigurations = lib.mapAttrs (hostname: _type: evalConfig { inherit hostname; }) hostDirs;
+  nixosDirs = lib.filterAttrs (_hostname: type: type == "directory") (builtins.readDir nixosDir);
+  nixosConfigurations = lib.mapAttrs (hostname: _type: evalConfig { inherit hostname; }) nixosDirs;
 in
 
 {

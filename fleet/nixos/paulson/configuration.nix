@@ -12,11 +12,11 @@
     ./grafana.nix
     ./hardware-configuration.nix
     ./media.nix
-    ../../nixos-modules/james-user.nix
+    ../../../nixos-modules/james-user.nix
     ./nas.nix
-    ../../nixos-modules/nix-index.nix
-    ../../nixos-modules/single-ext4.nix
-    ../../nixos-modules/zfs
+    ../../../nixos-modules/nix-index.nix
+    ../../../nixos-modules/single-ext4.nix
+    ../../../nixos-modules/zfs
     ./prometheus
   ];
 

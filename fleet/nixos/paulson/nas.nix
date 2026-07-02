@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../nixos-modules/zfs
+    ../../../nixos-modules/zfs
   ];
 
   # Mount various ZFS datasets. Note that `/mnt/cosmos` is *not* a parent dataset,

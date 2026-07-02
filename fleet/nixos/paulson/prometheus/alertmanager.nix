@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    ./../../../nixos-modules/ntfy-alertmanager.nix
+    .././../../../nixos-modules/ntfy-alertmanager.nix
   ];
 
   services = {

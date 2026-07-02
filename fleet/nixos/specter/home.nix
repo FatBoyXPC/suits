@@ -6,8 +6,8 @@
   ];
 
   home.file = builtins.mapAttrs (dotfile: source: {
-    source = ../../dotfiles/${source};
-  }) (import ../../dotfiles/links.nix);
+    source = ../../../dotfiles/${source};
+  }) (import ../../../dotfiles/links.nix);
 
   home.pointerCursor = {
     x11.enable = true;

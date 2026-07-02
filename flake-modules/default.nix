@@ -7,7 +7,7 @@
 
     # Outputs
     ./packages.nix
-    ./nixos-hosts.nix
+    ./fleet.nix
 
     # Development
     ./formatting.nix
