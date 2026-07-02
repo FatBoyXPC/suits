@@ -35,8 +35,17 @@ let
 in
 
 {
-  imports = lib.mapAttrsToList (hostname: nixosConfiguration: {
-    flake.nixosConfigurations.${hostname} = nixosConfiguration;
-    perSystem.checks."hosts/${hostname}" = nixosConfiguration.config.system.build.toplevel;
-  }) nixosConfigurations;
+  imports =
+    (lib.mapAttrsToList (hostname: nixosConfiguration: {
+      flake.nixosConfigurations.${hostname} = nixosConfiguration;
+      perSystem.checks."hosts/${hostname}" = nixosConfiguration.config.system.build.toplevel;
+    }) nixosConfigurations)
+    ++ [
+      {
+        flake.darwinConfigurations.hardman = inputs.nix-darwin.lib.darwinSystem {
+          modules = [ ../fleet/darwin/hardman/configuration.nix ];
+          specialArgs = { inherit inputs; };
+        };
+      }
+    ];
 }
