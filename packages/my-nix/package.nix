@@ -73,7 +73,7 @@ symlinkJoin {
       networkmanagerapplet
       polybarFull
       ripgrep
-      silver-searcher
+      silver-searcher-ng
       tldr
       tmux
       uhk-agent
