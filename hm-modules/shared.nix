@@ -1,6 +1,7 @@
 {
   imports = [
     ./git.nix
+    ./omz.nix
   ];
 
   programs = {

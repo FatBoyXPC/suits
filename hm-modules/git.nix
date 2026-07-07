@@ -31,7 +31,6 @@
 
       core = {
         editor = "nvim";
-        pager = "diff-so-fancy | less $LESS";
         excludesFile = "~/.gitignore_global";
       };
 
