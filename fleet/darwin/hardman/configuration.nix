@@ -12,6 +12,9 @@
   ];
 
   networking.computerName = "hardman";
+  networking.hostName = "hardman";
+  networking.localHostName = "hardman";
+
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   services.openssh = {
