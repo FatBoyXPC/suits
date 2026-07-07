@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   programs.git = {
     enable = true;
@@ -30,14 +32,13 @@
         excludesFile = "~/.gitignore_global";
       };
       github.user = "FatBoyXPC";
-      interactive.diffFilter = "diff-highlight | less";
       log.follow = true;
       pull.rebase = false;
       rerere.enabled = true;
       user = {
         name = "James LaChance";
         email = "fatboyxpc@gmail.com";
-        signingKey = "C4ED3CA232118969";
+        signingKey = lib.mkDefault "C4ED3CA232118969";
       };
     };
   };

@@ -1,4 +1,16 @@
+{ inputs, ... }:
 {
+  imports = [
+
+    inputs.home-manager.darwinModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users."james.lachance" = ./home.nix;
+      home-manager.extraSpecialArgs = { };
+    }
+  ];
+
   networking.computerName = "hardman";
   nixpkgs.hostPlatform = "aarch64-darwin";
 
@@ -6,9 +18,13 @@
     enable = true;
   };
 
-  users.users."james.lachance".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIId3HrH0wDaahWYCTZMKZeOWoRiacJIYJbek26vTEc1k fatboyxpc@gmail.com"
-  ];
+  users.users."james.lachance" = {
+    home = "/Users/james.lachance";
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIId3HrH0wDaahWYCTZMKZeOWoRiacJIYJbek26vTEc1k fatboyxpc@gmail.com"
+    ];
+  };
 
   # Determinate uses its own daemon to manage the Nix installation that
   # conflicts with nix-darwin’s native Nix management.
