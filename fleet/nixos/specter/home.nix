@@ -3,6 +3,7 @@
 {
   imports = [
     ./omz.nix
+    ../../../hm-modules/git.nix
   ];
 
   home.file = builtins.mapAttrs (dotfile: source: {

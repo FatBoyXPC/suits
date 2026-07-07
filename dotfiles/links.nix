@@ -10,7 +10,6 @@
   #".config/nvim" = "vim";
   #".config/phpactor" = "config/phpactor";
   #".config/polybar" = "config/polybar";
-  ".gitconfig" = "gitconfig";
   ".gitignore_global" = "gitignore_global";
   #".git_templates" = "git_templates";
   #".myclirc" = "myclirc";
