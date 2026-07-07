@@ -3,6 +3,7 @@
 {
   programs.git = {
     enable = true;
+
     settings = {
       color = {
         diff = {
@@ -23,14 +24,17 @@
 
         ui = true;
       };
+
       commit = {
         gpgSign = true;
       };
+
       core = {
         editor = "nvim";
         pager = "diff-so-fancy | less $LESS";
         excludesFile = "~/.gitignore_global";
       };
+
       github.user = "FatBoyXPC";
 
       gpg.ssh.allowedSignersFile = "${pkgs.writeText "allowed-signers" ''
@@ -40,6 +44,7 @@
       log.follow = true;
       pull.rebase = false;
       rerere.enabled = true;
+
       user = {
         name = "James LaChance";
         email = "fatboyxpc@gmail.com";
