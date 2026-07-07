@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.git = {
@@ -32,6 +32,11 @@
         excludesFile = "~/.gitignore_global";
       };
       github.user = "FatBoyXPC";
+
+      gpg.ssh.allowedSignersFile = "${pkgs.writeText "allowed-signers" ''
+        james.lachance@allyms.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzzdv7APurZsrONkhWmL64MWC9tOx3aY2GrmG0PLsUt
+      ''}";
+
       log.follow = true;
       pull.rebase = false;
       rerere.enabled = true;
