@@ -36,6 +36,7 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
+        "nomachine-client"
         "reaper"
         "steam"
         "steam-unwrapped"
@@ -150,6 +151,7 @@
     acpi
     darktable
     self'.packages.my-nix
+    nomachine-client
     psmisc
     reaper
     signal-desktop
