@@ -43,7 +43,18 @@ in
     ++ [
       {
         flake.darwinConfigurations.hardman = inputs.nix-darwin.lib.darwinSystem {
-          modules = [ ../fleet/darwin/hardman/configuration.nix ];
+          modules = [
+            ../fleet/darwin/hardman/configuration.nix
+            (
+              { pkgs, ... }:
+              {
+                _module.args = {
+                  inputs' = withSystem pkgs.stdenv.hostPlatform.system ({ inputs', ... }: inputs');
+                  self' = withSystem pkgs.stdenv.hostPlatform.system ({ self', ... }: self');
+                };
+              }
+            )
+          ];
           specialArgs = { inherit inputs; };
         };
       }

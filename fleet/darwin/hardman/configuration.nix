@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self', ... }:
 {
   imports = [
 
@@ -7,7 +7,7 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users."james.lachance" = ./home.nix;
-      home-manager.extraSpecialArgs = { };
+      home-manager.extraSpecialArgs = { inherit self'; };
     }
   ];
 
