@@ -1,4 +1,9 @@
-{ inputs, self', ... }:
+{
+  inputs,
+  pkgs,
+  self',
+  ...
+}:
 {
   imports = [
     ../../../shared-modules/shell.nix
@@ -11,6 +16,18 @@
       home-manager.extraSpecialArgs = { inherit self'; };
     }
   ];
+
+  environment.systemPackages =
+    (with pkgs; [
+      fzf
+      mycli
+      silver-searcher-ng
+      tmux
+    ])
+    ++ (with self'.packages; [
+      dvo
+      neovim
+    ]);
 
   networking.computerName = "hardman";
   networking.hostName = "hardman";
