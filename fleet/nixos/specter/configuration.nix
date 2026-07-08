@@ -20,11 +20,9 @@
     ../../../nixos-modules/nix-index.nix
     ../../../nixos-modules/single-ext4.nix
     ../../../nixos-modules/ssh-colorscheme.nix
+    ../../../shared-modules/shell.nix
     ./polybar
-    ./shell.nix
-    #./gpu.nix
 
-    #./kodi
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;

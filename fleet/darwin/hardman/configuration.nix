@@ -1,6 +1,7 @@
 { inputs, self', ... }:
 {
   imports = [
+    ../../../shared-modules/shell.nix
 
     inputs.home-manager.darwinModules.home-manager
     {
