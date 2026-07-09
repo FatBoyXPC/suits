@@ -18,6 +18,7 @@
     ./hardware-configuration.nix
     ./interception-tools.nix
     ../../../nixos-modules/nix-index.nix
+    ../../../nixos-modules/nomachine.nix
     ../../../nixos-modules/single-ext4.nix
     ../../../nixos-modules/ssh-colorscheme.nix
     ../../../shared-modules/shell.nix
