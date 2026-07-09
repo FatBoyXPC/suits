@@ -150,6 +150,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     acpi
+    codex
     darktable
     self'.packages.my-nix
     nomachine-client
