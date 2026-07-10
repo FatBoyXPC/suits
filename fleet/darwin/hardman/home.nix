@@ -1,5 +1,6 @@
 {
   imports = [
+    ../../../hm-modules/docker.nix
     ../../../hm-modules/shared.nix
   ];
 
