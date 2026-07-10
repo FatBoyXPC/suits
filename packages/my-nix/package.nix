@@ -9,7 +9,11 @@
 
 let
   shtuff = inputs'.shtuff.packages.default;
-  with-alacritty = inputs'.with-alacritty.packages.default;
+
+  with-alacritty = inputs'.with-alacritty.packages.default.override {
+    alacritty = self'.packages.alacritty;
+  };
+
   chromiumAlt = symlinkJoin {
     name = "chromium";
     paths = [
