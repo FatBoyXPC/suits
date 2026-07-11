@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   self',
   ...
@@ -7,6 +8,7 @@
 {
   imports = [
     ../../../shared-modules/shell.nix
+    ../../../shared-modules/experimental-features.nix
 
     inputs.home-manager.darwinModules.home-manager
     {
@@ -17,8 +19,27 @@
     }
   ];
 
+  nixpkgs.config = {
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "claude-code"
+        "claude-monitor"
+        "nomachine-client"
+        "reaper"
+        "steam"
+        "steam-unwrapped"
+      ];
+
+    permittedInsecurePackages = [
+      "libsoup-2.74.3"
+    ];
+  };
+
   environment.systemPackages =
     (with pkgs; [
+      claude-code
+      claude-monitor
       fzf
       mycli
       silver-searcher-ng

@@ -21,6 +21,7 @@
     ../../../nixos-modules/nomachine.nix
     ../../../nixos-modules/single-ext4.nix
     ../../../nixos-modules/ssh-colorscheme.nix
+    ../../../shared-modules/experimental-features.nix
     ../../../shared-modules/shell.nix
     ./polybar
 
@@ -138,12 +139,6 @@
   nix.settings.trusted-users = [
     "root"
     "@wheel"
-  ];
-
-  # Flakes!
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
   ];
 
   # List packages installed in system profile. To search, run:
