@@ -28,4 +28,6 @@
       };
     };
   };
+
+  launchd.agents.colima-default.domain = "gui";
 }
