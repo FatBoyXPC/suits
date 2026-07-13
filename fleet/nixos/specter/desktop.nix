@@ -19,7 +19,7 @@
     };
   };
   programs.zsh.loginShellInit = ''
-    [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && SHLVL=0 exec startx
+    [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
   '';
 
   programs.nm-applet.enable = true;
