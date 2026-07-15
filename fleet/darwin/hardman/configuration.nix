@@ -41,11 +41,13 @@
       claude-code
       claude-monitor
       fzf
+      gnugrep
       mycli
       silver-searcher-ng
       tmux
     ])
     ++ (with self'.packages; [
+      db
       dvo
       neovim
     ]);
