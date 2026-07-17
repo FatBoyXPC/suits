@@ -71,6 +71,14 @@ in
       action = ":set wrap!<CR>";
     }
     {
+      key = "<C-_>";
+      action = "<Plug>NERDCommenterToggle";
+      mode = [
+        "n"
+        "x"
+      ];
+    }
+    {
       key = "<C-/>";
       action = "<Plug>NERDCommenterToggle";
       mode = [
