@@ -5,26 +5,24 @@
   # linux, I would opt to use virtualisation.docker.enable = true;
 
   home.packages = with pkgs; [
-    colima
     docker
     docker-compose
   ];
 
-  services = {
-    colima = {
-      enable = true;
+  services.colima = {
+    enable = true;
 
-      profiles.default = {
-        isActive = true;
-        isService = true;
-        setDockerHost = true;
+    profiles.default = {
+      isActive = true;
+      isService = true;
+      setDockerHost = true;
 
-        settings = {
-          vmType = "vz";
-          mountType = "virtiofs";
-          cpu = 4;
-          memory = 8;
-        };
+      settings = {
+        cpu = 4;
+        memory = 8;
+        vmType = "vz";
+        mountInotify = true;
+        mountType = "virtiofs";
       };
     };
   };
