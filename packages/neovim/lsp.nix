@@ -21,28 +21,28 @@
       phpactor.enable = true;
       nixd.enable = true;
     };
-  };
 
-  lsp.keymaps = [
-    {
-      key = "gd";
-      lspBufAction = "definition";
-    }
-    {
-      key = "<Leader>gt";
-      lspBufAction = "type_definition";
-    }
-    {
-      key = "<Leader>gi";
-      lspBufAction = "implementation";
-    }
-    {
-      key = "<Leader>gr";
-      lspBufAction = "references";
-    }
-    {
-      key = "<Leader>ac";
-      lspBufAction = "code_action";
-    }
-  ];
+    keymaps = [
+      {
+        key = "gd";
+        lspBufAction = "definition";
+      }
+      {
+        key = "<Leader>gt";
+        lspBufAction = "type_definition";
+      }
+      {
+        key = "<Leader>gi";
+        lspBufAction = "implementation";
+      }
+      {
+        key = "<Leader>gr";
+        lspBufAction = "references";
+      }
+      {
+        key = "<Leader>ac";
+        lspBufAction = "code_action";
+      }
+    ];
+  };
 }
