@@ -18,8 +18,9 @@
     inlayHints.enable = true;
 
     servers = {
-      phpactor.enable = true;
+      bashls.enable = true;
       nixd.enable = true;
+      phpactor.enable = true;
     };
 
     keymaps = [
