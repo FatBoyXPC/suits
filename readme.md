@@ -24,5 +24,5 @@ Reference [nixos-anywhere quickstart](https://github.com/nix-community/nixos-any
 
 ### Deploying changes to a machine:
 
-With the use of the `deploy` script in the bin directory, we can simply call
-the script with a target for the first argument, such as `deploy zane`.
+Visit the deploy package's [readme](./packages/deploy/readme.md) for documentation on how to use the
+`deploy` command.
