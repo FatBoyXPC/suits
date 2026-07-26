@@ -21,6 +21,10 @@
       bashls.enable = true;
       nixd.enable = true;
       phpactor.enable = true;
+
+      # Python
+      pyright.enable = true;
+      ruff.enable = true;
     };
 
     keymaps = [
