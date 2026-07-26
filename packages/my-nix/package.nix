@@ -79,7 +79,6 @@ symlinkJoin {
       ripgrep
       silver-searcher-ng
       tldr
-      tmux
       uhk-agent
       unzip
       weechat

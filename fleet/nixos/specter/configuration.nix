@@ -152,6 +152,7 @@
     psmisc
     reaper
     signal-desktop
+    tmux
     xbacklight
     xsel
   ];
