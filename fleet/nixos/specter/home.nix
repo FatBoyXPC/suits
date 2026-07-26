@@ -10,6 +10,7 @@
   }) (import ../../../dotfiles/links.nix);
 
   home.pointerCursor = {
+    enable = true;
     x11.enable = true;
     gtk.enable = true;
 
