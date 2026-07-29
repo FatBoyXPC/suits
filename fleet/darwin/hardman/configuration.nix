@@ -51,6 +51,7 @@
     ++ (with self'.packages; [
       db
       dvo
+      git-cp
       neovim
     ]);
 
