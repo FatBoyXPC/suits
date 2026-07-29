@@ -52,6 +52,7 @@
       db
       dvo
       git-cp
+      git-touch
       neovim
     ]);
 
