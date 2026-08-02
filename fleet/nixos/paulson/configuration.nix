@@ -24,6 +24,7 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
+        "pangolin"
         "nvidia-kernel-modules"
         "nvidia-settings"
         "nvidia-x11"
@@ -52,6 +53,9 @@
       environmentFile = "/etc/secrets/pangolin.env";
       letsEncryptEmail = "fatboyxpc@gmail.com";
       openFirewall = true;
+      package = pkgs.fosrl-pangolin.override {
+        edition = "enterprise";
+      };
     };
 
     openssh.enable = true;
