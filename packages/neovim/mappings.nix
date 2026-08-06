@@ -42,18 +42,44 @@ in
 
     # Editing
     {
-      key = ";;";
+      key = "<Leader>;;";
       action = "<ESC>A;<ESC>";
       mode = [
         "n"
+      ];
+    }
+    {
+      key = ";;";
+      action = "<ESC>A;<ESC>";
+      mode = [
         "i"
+      ];
+    }
+    {
+      key = "<Leader>::";
+      action = "<ESC>A:<ESC>";
+      mode = [
+        "n"
       ];
     }
     {
       key = "::";
       action = "<ESC>A:<ESC>";
       mode = [
+        "i"
+      ];
+    }
+    {
+      key = "<Leader>,,";
+      action = "<ESC>A,<ESC>";
+      mode = [
         "n"
+      ];
+    }
+    {
+      key = ",,";
+      action = "<ESC>A,<ESC>";
+      mode = [
         "i"
       ];
     }
