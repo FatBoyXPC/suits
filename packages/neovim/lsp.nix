@@ -1,4 +1,11 @@
 {
+  lib,
+  pkgs,
+  self',
+  ...
+}:
+
+{
   plugins = {
     lsp.enable = true;
     lsp-format = {
@@ -9,6 +16,22 @@
     none-ls = {
       enable = true;
       sources.formatting.nix_flake_fmt.enable = true;
+    };
+
+    lsp.servers.laravel_ls = {
+      enable = true;
+      package = self'.packages.laravel-lsp;
+      cmd = [ "laravel-lsp" ];
+      filetypes = [
+        "php"
+        "blade"
+      ];
+      rootMarkers = [
+        "artisan"
+        "composer.json"
+        ".git"
+      ];
+      extraOptions.init_options.phpCommand = [ "${lib.getExe pkgs.php}" ];
     };
   };
 

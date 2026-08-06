@@ -1,11 +1,13 @@
 {
   pkgs,
   inputs',
+  self',
   ...
 }:
 
 inputs'.nixvim.legacyPackages.makeNixvimWithModule {
   inherit pkgs;
+  extraSpecialArgs = { inherit self'; };
   module = {
     extraConfigVim = ''
       scriptencoding utf-8
