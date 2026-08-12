@@ -37,6 +37,8 @@
   networking = {
     hostId = "93a23331";
     hostName = "paulson";
+
+    firewall.allowedUDPPorts = [ 21820 ];
   };
 
   services = {
