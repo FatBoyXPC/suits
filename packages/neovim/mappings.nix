@@ -23,6 +23,10 @@ in
       key = "<Leader>q";
       action = ":q<CR>";
     }
+    {
+      key = "<Leader>st";
+      action = ":set spell!<CR>";
+    }
 
     # Not sure if I want to keep this around
     {
