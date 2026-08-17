@@ -3,11 +3,11 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
-  config,
   lib,
   pkgs,
   self',
   inputs,
+  inputs',
   ...
 }:
 
@@ -151,6 +151,7 @@
     nomachine-client
     psmisc
     reaper
+    inputs'.jnix.packages.shpair
     signal-desktop
     tmux
     xbacklight
