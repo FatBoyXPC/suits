@@ -74,6 +74,8 @@
     enable = true;
   };
 
+  system.defaults.dock.autohide = true;
+
   users.users."james.lachance" = {
     home = "/Users/james.lachance";
 
