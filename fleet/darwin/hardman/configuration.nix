@@ -56,6 +56,14 @@
       neovim
     ]);
 
+  homebrew = {
+    enable = true;
+
+    casks = [
+      "nomachine"
+    ];
+  };
+
   networking.computerName = "hardman";
   networking.hostName = "hardman";
   networking.localHostName = "hardman";
@@ -85,5 +93,6 @@
   # To turn off nix-darwin’s management of the Nix installation, set:
   nix.enable = false;
 
+  system.primaryUser = "james.lachance";
   system.stateVersion = 7;
 }
