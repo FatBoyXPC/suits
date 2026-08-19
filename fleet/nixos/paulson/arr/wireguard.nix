@@ -18,6 +18,9 @@
       "192.168.2.0/24"
       #config.snow.subnets.overlay.ipv6 # <<<
     ];
+    allowedEgress = [
+      "192.168.2.48/32"
+    ];
   };
 
   systemd.services.mvd.serviceConfig = {
