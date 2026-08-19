@@ -44,6 +44,7 @@
       claude-monitor
       fzf
       gnugrep
+      less
       mycli
       silver-searcher-ng
       tmux
