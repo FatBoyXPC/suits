@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   imports = [
     ./arr
@@ -25,5 +24,3 @@
     };
   };
 }
-
-# vpn <<< wireguard.conf
