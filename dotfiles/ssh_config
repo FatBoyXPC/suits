@@ -93,6 +93,11 @@ Host fbproxy
     DynamicForward 9090
     user james
 
+Host hardman
+    HostName hardman.lan
+    LocalForward 8000 127.0.0.1:8000
+    User james.lachance
+
 Host paulson
     HostName 192.168.2.48
     user james
