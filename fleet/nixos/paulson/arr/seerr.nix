@@ -11,7 +11,7 @@ in
       inherit host port;
     };
 
-    protected.lan = false;
+    unprotected = true;
   };
 
   systemd.services.seerr = {
