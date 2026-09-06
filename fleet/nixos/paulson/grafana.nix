@@ -7,6 +7,12 @@
     enable = true;
     provision = {
       enable = true;
+      dashboards.settings.providers = [
+        {
+          name = "paulson";
+          options.path = ./grafana-dashboards;
+        }
+      ];
       datasources.settings.datasources = [
         {
           name = "Prometheus";

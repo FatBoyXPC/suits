@@ -17,6 +17,8 @@
 
     exporters = {
       node.enable = true;
+      postgres.enable = true;
+
       systemd = {
         enable = true;
         user = "root";
