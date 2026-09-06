@@ -62,8 +62,16 @@ in
   config = {
     services.newt.blueprint.public-resources = lib.mapAttrs (
       _: value:
+      let
+        enableAuth = value.protected.wan || value.protected.lan;
+      in
       {
-        auth.sso-enabled = value.protected.wan || value.protected.lan;
+        auth = {
+          sso-enabled = enableAuth;
+        }
+        // lib.optionalAttrs enableAuth {
+          sso-roles = [ "Member" ];
+        };
 
         full-domain = "${value.subdomain}.${config.services.pangolin.baseDomain}";
         name = value.name;
