@@ -13,6 +13,7 @@
     ./media.nix
     ../../../nixos-modules/james-user.nix
     ./nas.nix
+    ../../../nixos-modules/maintenance.nix
     ../../../nixos-modules/nix-index.nix
     ../../../nixos-modules/single-ext4.nix
     ../../../nixos-modules/zfs
