@@ -21,6 +21,7 @@
     ../../../nixos-modules/nomachine.nix
     ../../../nixos-modules/single-ext4.nix
     ../../../nixos-modules/ssh-colorscheme.nix
+    ../../../nixos-modules/zfs
     ../../../shared-modules/experimental-features.nix
     ../../../shared-modules/shell.nix
     ./polybar
@@ -60,7 +61,10 @@
     }
   ];
 
-  networking.hostName = "specter"; # Define your hostname.
+  networking = {
+    hostId = "10f66340";
+    hostName = "specter"; # Define your hostname.
+  };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
@@ -147,6 +151,7 @@
     acpi
     codex
     darktable
+    self'.packages.git-touch
     self'.packages.my-nix
     nomachine-client
     psmisc
