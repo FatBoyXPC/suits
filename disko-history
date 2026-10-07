@@ -1,0 +1,111 @@
+Starting over!
+I had to reboot my laptop to get rid of the zpool I never exported before disconnecting the drive.
+This is because I attempted to do this twice.
+That said, since the pool is named zroot when disko-install runs, will this be an issue?
+
+I already put paulson into maintenance mode since it was "down" anyway (undoing all the recent work)
+
+disko-install:
+sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#paulson --disk root /dev/sda --extra-files decrypted-secrets/paulson/ /etc/secrets/
+
+Notes: --disk root /dev/sda - root refers to a disk specified in your disko configuration.
+
+Check if datasets are mounted: (they probably are not if disko-install succeeded)
+zfs list -o name,mounted,mountpoint
+
+Mount the drive post install:
+zfs -a
+
+Note: probably not wise if already on a machine running zfs.
+
+Verify secrets exist:
+ls -l /mnt/disko-install-root/etc/secrets/
+
+rsync all the things!
+sudo rsync -e "sudo -u james ssh" -aAXUHvP --rsync-path="sudo rsync" paulson:/etc/passwd /mnt/disko-install-root/etc/passwd
+sudo rsync -e "sudo -u james ssh" -aAXUHvP --rsync-path="sudo rsync" paulson:/etc/group /mnt/disko-install-root/etc/group
+sudo rsync -e "sudo -u james ssh" -aAXUHvP --rsync-path="sudo rsync" paulson:/var/lib/ /mnt/disko-install-root/var/lib/
+
+export zpool: (so you don't hang when rebooting your machine next time and it cleanly boots in new machine)
+sudo zpool export zroot
+
+Swap drives
+
+On first boot I noticed some sort of text showing it's waiting for a zfs import job.
+
+ssh into initrd and journalctl -u zfs-import-zroot.service and saw this error:
+cannot import 'zroot': more than one matching pool
+
+Here is how I proceeded:
+
+-bash-5.3# zpool import
+  pool: zroot
+    id: 541233876390802874
+ state: ONLINE
+action: The pool can be imported using its name or numeric identifier.
+config:
+
+	zroot                                                  ONLINE
+	  ata-Samsung_SSD_870_EVO_500GB_S6PXNL0X301831J-part2  ONLINE
+
+  pool: zroot
+    id: 18341405789359621213
+ state: ONLINE
+action: The pool can be imported using its name or numeric identifier.
+config:
+
+	zroot            ONLINE
+	  disk-root-zfs  ONLINE
+
+  pool: cosmos
+    id: 3640767705871004206
+ state: ONLINE
+action: The pool can be imported using its name or numeric identifier.
+config:
+
+	cosmos                              ONLINE
+	  ata-ST6000VN0033-2EE110_ZADBCMEN  ONLINE
+-bash-5.3# zpool import -f 18341405789359621213 zroot-old
+-bash-5.3# zfs list
+NAME                     USED  AVAIL  REFER  MOUNTPOINT
+zroot-old               23.3G   876G    96K  none
+zroot-old/root          23.3G   876G  6.19G  /
+zroot-old/root/var      17.1G   876G   304K  /var
+zroot-old/root/var/lib  17.1G   876G  16.3G  /var/lib
+-bash-5.3# zpool destroy zroot-old
+
+Rebooted and everything JustWorked™!
+
+
+
+
+
+Learnning lessons:
+
+when disko-install fails it does not clean up the zpool it created
+It seems not to when it succeeds, either
+on success, it does not keep the datasets mounted, and /mnt/disko-install-root does go away (stays when failed)
+mount things with `sudo zfs mount -a`
+
+Because /mnt/disko-install-root is owned and grouped by root, you need `sudo rsync -e "sudo -u localuser ssh"`
+In my particular case with `/var/lib` I also needed `--rsync-path="sudo rsync"`
+The full command I ran:
+sudo rsync -e "sudo -u james ssh" -aAXUHvP --rsync-path="sudo rsync" paulson:/var/lib/ /mnt/disko-install-root/var/lib/
+Then on paulson `sudo systemctll isolate maintenance.target`
+sudo rsync -e "sudo -u james ssh" -aAXUHvP --delete --rsync-path="sudo rsync" paulson:/var/lib/ /mnt/disko-install-root/var/lib/
+sudo zfs unmount -a (only do this if these are your only zfs mounts! Would be bad to do this on paulson prior to this!)
+
+
+Loop back device:
+`truncate -s 50G /tmp/disk.img`
+`sudo losetup --find --show /tmp/disk.img` # creates loopback device and shows /dev/path to it
+`losetup -a` # to see active loopback devices
+`losetup -d /dev/loop0`
+
+
+
+zpool zroot was previously in use from another system!
+ssh into initrd
+zpool import -f zroot
+zpool export zroot
+reboot

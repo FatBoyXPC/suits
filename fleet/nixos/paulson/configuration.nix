@@ -6,16 +6,17 @@
 
 {
   imports = [
+    ./disko.nix
     ./fat-proxy.nix
     ./gpu.nix
     ./grafana.nix
     ./hardware-configuration.nix
     ./media.nix
+    ../../../nixos-modules/initrd-ssh.nix
     ../../../nixos-modules/james-user.nix
     ./nas.nix
     ../../../nixos-modules/maintenance.nix
     ../../../nixos-modules/nix-index.nix
-    ../../../nixos-modules/single-ext4.nix
     ../../../nixos-modules/zfs
     ./prometheus
   ];
@@ -32,8 +33,7 @@
   };
 
   boot.loader.systemd-boot.enable = true;
-
-  disko.devices.disk.main.device = "/dev/disk/by-id/ata-ADATA_SU655_2L302LA1K6JC";
+  fat.initrd-ssh.networkKernelModule = "r8169";
 
   networking = {
     hostId = "93a23331";
