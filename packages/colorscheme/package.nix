@@ -3,6 +3,7 @@
   writeShellApplication,
   symlinkJoin,
   makeWrapper,
+  xdotool,
   yq-go,
   jq,
   lib,
@@ -32,6 +33,7 @@ symlinkJoin {
       --set COLORSCHEME_PATH ${./colorschemes}:${base16-alacritty} \
       --prefix PATH : ${
         lib.makeBinPath [
+          xdotool
           yq-go
           jq
         ]
